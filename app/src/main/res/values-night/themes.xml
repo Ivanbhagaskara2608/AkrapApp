@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="android:textAllCaps">false</item>
         <item name="fontFamily">@font/gotham_medium</item>
+        <item name="android:textCursorDrawable">@null</item>
     </style>
 </resources>

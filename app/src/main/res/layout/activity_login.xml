@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="@color/orange"
     android:paddingHorizontal="25dp"
+    tools:ignore="HardcodedText"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -25,6 +26,7 @@
         android:layout_gravity="center">
 
         <TextView
+            android:id="@+id/masukTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Masuk"
@@ -33,28 +35,86 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/usernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Username"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameTextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxBackgroundColor="@color/orange"
-            app:boxStrokeColor="@color/black"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+            style="@style/customInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:paddingStart="0dp"
-                android:textSize="16sp"/>
+                android:id="@+id/usernameEditText"
+                style="@style/customEditText"
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/passwordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextInputLayout"
+            style="@style/customInputLayoutPassword">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                style="@style/customEditTextPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/forgetPasswordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="end"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Lupa Password?"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/loginButton"
+            style="@style/customButton"
+            android:text="Masuk"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum punya akun?"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Daftar dulu yuk"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
