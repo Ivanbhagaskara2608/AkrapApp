@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/orange"
+    android:paddingHorizontal="25dp"
+    tools:ignore="HardcodedText"
+    tools:context=".Register1Activity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/_236"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/daftarTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daftar"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/fullnameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Nama Lengkap"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fullnameTextInputLayout"
+            style="@style/customInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullnameEditText"
+                style="@style/customEditText"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/phoneNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Nomor Telepon"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneNumberInputLayout"
+            style="@style/customInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneNumberEditText"
+                style="@style/customEditText"
+                android:inputType="phone"
+                android:drawableStart="@drawable/_62"
+                android:drawablePadding="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/birthdateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
+            android:text="Tanggal Lahir"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/birthdateInputLayout"
+            style="@style/customInputLayout"
+            android:hint="dd/mm/yyyy">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/customEditText"
+                android:id="@+id/birthdateEditText"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/genderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Jenis Kelamin"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:id="@+id/genderInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="-- Pilih Salah Satu --"
+            app:boxBackgroundColor="@color/orange"
+            app:endIconTint="@color/black"
+            app:boxStrokeColor="@color/black">
+
+            <AutoCompleteTextView
+                android:id="@+id/genderAutoComplete"
+                android:layout_width="match_parent"
+                android:paddingStart="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textSize="16sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/register1Button"
+            style="@style/customButton"
+            android:text="Lanjutkan"/>
+
+    </LinearLayout>
+
+</LinearLayout>

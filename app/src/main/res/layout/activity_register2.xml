@@ -8,13 +8,13 @@
     android:background="@color/orange"
     android:paddingHorizontal="25dp"
     tools:ignore="HardcodedText"
-    tools:context=".LoginActivity">
+    tools:context=".Register2Activity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/_278"
+        android:src="@drawable/_236"
         android:layout_gravity="center"/>
 
     <LinearLayout
@@ -22,14 +22,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center">
 
         <TextView
-            android:id="@+id/masukTextView"
+            android:id="@+id/daftarTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masuk"
+            android:text="Daftar"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@color/white"/>
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Username"
+            android:text="Nama Lengkap"
             android:textColor="@color/black"
             android:textSize="16sp"/>
 
@@ -51,6 +51,35 @@
                 android:id="@+id/usernameEditText"
                 style="@style/customEditText"
                 android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/positionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Posisi"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:id="@+id/positionInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="-- Pilih Salah Satu --"
+            app:boxBackgroundColor="@color/orange"
+            app:endIconTint="@color/black"
+            app:boxStrokeColor="@color/black">
+
+            <AutoCompleteTextView
+                android:id="@+id/positionAutoComplete"
+                android:layout_width="match_parent"
+                android:paddingStart="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textSize="16sp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,48 +103,28 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/forgetPasswordTextView"
+            android:id="@+id/repasswordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_gravity="end"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="Lupa Password?"
-            android:textColor="@color/white"/>
+            android:text="Ulangi Password"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/repasswordTextInputLayout"
+            style="@style/customInputLayoutPassword">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/repasswordEditText"
+                style="@style/customEditTextPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/register2Button"
             style="@style/customButton"
-            android:text="Masuk"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Belum punya akun?"
-                android:textColor="@color/black"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:id="@+id/registerTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="Daftar dulu yuk"
-                android:textColor="@color/white"
-                android:textStyle="italic"
-                android:textSize="15sp"/>
-
-        </LinearLayout>
+            android:text="Daftar"/>
 
     </LinearLayout>
 
