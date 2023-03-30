@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeNavigation"
+        android:title=""
+        android:icon="@drawable/icon_home" />
+
+    <item android:id="@+id/scheduleNavigation"
+        android:title=""
+        android:icon="@drawable/icon_calendar" />
+
+    <item android:id="@+id/placeholder"
+        android:title="" />
+
+    <item android:id="@+id/infoNavigation"
+        android:title=""
+        android:icon="@drawable/icon_bell" />
+
+    <item android:id="@+id/settingsNavigation"
+        android:title=""
+        android:icon="@drawable/icon_settings" />
+</menu>
