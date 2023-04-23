@@ -1,11 +1,10 @@
-package com.example.akrapapp
+package com.example.akrapapp.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.akrapapp.R
 import kotlinx.android.synthetic.main.activity_register1.*
-import kotlinx.android.synthetic.main.activity_register1.register1Button
-import kotlinx.android.synthetic.main.activity_register2.*
 
 class Register1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

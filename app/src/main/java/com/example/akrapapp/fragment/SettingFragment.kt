@@ -1,10 +1,11 @@
-package com.example.akrapapp
+package com.example.akrapapp.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.akrapapp.R
 
 class SettingFragment : Fragment() {
     override fun onCreateView(

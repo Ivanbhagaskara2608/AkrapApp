@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/orange"
-    tools:context=".ScheduleFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:ignore="HarcodedText"
+    tools:context=".fragment.ScheduleFragment">
+    
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/scheduleTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        app:tabMode="fixed"
+        app:tabIndicatorGravity="stretch"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabSelectedTextColor="@color/orange"
+        app:tabTextColor="@color/black"
+        app:tabTextAppearance="@style/tabLayoutText"
+        app:tabIndicatorColor="@null"
+        app:tabIndicator="@drawable/tab_indicator"/>
+    
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/scheduleViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="schedule" />
+        android:layout_below="@id/scheduleTabLayout"/>
 
-</FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/baseline_add_24"
+        app:fabCustomSize="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/scheduleTabLayout"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/baseline_create_24"
+        app:fabCustomSize="50dp"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/editFloatingButton"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        app:maxImageSize="25dp"
+        app:srcCompat="@drawable/baseline_delete_24"
+        app:fabCustomSize="50dp"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/addFloatingButton"/>
+
+</RelativeLayout>

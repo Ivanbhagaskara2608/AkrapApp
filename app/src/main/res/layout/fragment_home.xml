@@ -6,7 +6,7 @@
     android:background="@color/orange"
     android:orientation="vertical"
     android:scrollbars="none"
-    tools:context=".HomeFragment">
+    tools:context=".fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                         android:textStyle="bold"/>
 
                 </LinearLayout>
-
+                
             </LinearLayout>
 
             <ImageView
@@ -142,6 +142,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
                         android:background="@drawable/rectangle_schedule_detail">
 
@@ -154,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:layout_marginStart="10dp">
+                            android:layout_marginStart="5dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -178,6 +179,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
                         android:layout_marginHorizontal="15dp"
                         android:background="@drawable/rectangle_schedule_detail">
@@ -191,8 +193,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:layout_marginStart="10dp"
-                            android:text="Bagas RT 04"
+                            android:layout_marginStart="5dp"
+                            android:text="Ivan Bhagaskara "
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="10sp"/>
@@ -202,6 +204,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
                         android:background="@drawable/rectangle_schedule_detail">
 
@@ -210,15 +213,29 @@
                             android:layout_height="17dp"
                             android:src="@drawable/icon_clock"/>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginStart="10dp"
-                            android:text="19.30-22.00"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"/>
+                            android:orientation="vertical"
+                            android:layout_marginStart="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="19:30 -"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="22:30"
+                                android:textSize="10sp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

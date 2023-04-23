@@ -1,46 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:orientation="vertical"
     tools:ignore="HardcodedText"
-    tools:context=".activity.PresenceActivity">
-
-    <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:autoFocusButtonVisible="false"
-        app:flashButtonVisible="false"
-        app:frameAspectRatioWidth="280"
-        app:frameAspectRatioHeight="300"
-        app:frameSize="0.9"
-        app:frameVerticalBias="0.3"
-        app:frameColor="@color/white"
-        app:maskColor="@color/orange"
-        app:frameCornersSize="60dp"
-        app:frameThickness="5dp"
-        app:frameCornersRadius="1dp"/>
+    tools:context=".activity.Presence2Activity">
 
     <LinearLayout
-        android:id="@+id/layoutPresence"
-        android:layout_width="wrap_content"
+        android:id="@+id/layoutPresence2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/backPresence"
+            android:id="@+id/backPresence2"
             android:layout_width="15dp"
             android:layout_height="24dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="40dp"
             android:background="@drawable/icon_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="88dp"
             android:text="Pindai QR Code"
             android:textColor="@color/white"
@@ -48,24 +34,34 @@
             android:textSize="24sp"/>
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/inputCodeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginHorizontal="60dp"
+        android:paddingHorizontal="30dp"
+        android:maxLength="64"
+        android:hint="Masukkan kode presensi"
+        android:textAlignment="center"
+        android:textSize="11sp"
+        android:background="@drawable/codetextarea"/>
+
     <Button
-        android:id="@+id/qrCodeButton"
+        android:id="@+id/presenceButton"
         style="@style/customButton"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="210dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:text="Input QR Code"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginBottom="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
         android:paddingVertical="18dp"
-        android:paddingHorizontal="25dp"
+        android:paddingHorizontal="26dp"
         android:background="@drawable/rectangle_radius_15"
         android:backgroundTint="@color/white"
         android:orientation="horizontal">
@@ -82,8 +78,8 @@
             android:layout_marginStart="10dp"
             android:textSize="10dp"
             android:textColor="@color/black"
-            android:text="Arahkan kamera ke QR Code untuk melakukan presensi"/>
+            android:text="Masukkan kode dari QR Code yang telah dibagikan lalu submit untuk melakukan presensi"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

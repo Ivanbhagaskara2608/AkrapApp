@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/orange"
     tools:ignore="HardcodedText"
-    tools:context=".HomeActivity">
+    tools:context=".activity.HomeActivity">
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
+            app:itemRippleColor="@android:color/transparent"
             android:background="@android:color/transparent"
             app:menu="@menu/bottom_nav_menu"/>
 
