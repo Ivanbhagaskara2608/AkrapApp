@@ -39,8 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Nama Lengkap"
-            android:textColor="@color/black"
+            android:text="Username"
             android:textSize="16sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -55,41 +54,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/positionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Posisi"
-            android:textColor="@color/black"
-            android:textSize="16sp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-            android:id="@+id/positionInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="-- Pilih Salah Satu --"
-            app:boxBackgroundColor="@color/orange"
-            app:endIconTint="@color/black"
-            app:boxStrokeColor="@color/black">
-
-            <AutoCompleteTextView
-                android:id="@+id/positionAutoComplete"
-                android:layout_width="match_parent"
-                android:paddingStart="0dp"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textSize="16sp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
             android:id="@+id/passwordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Password"
-            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -108,7 +77,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Ulangi Password"
-            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <com.google.android.material.textfield.TextInputLayout

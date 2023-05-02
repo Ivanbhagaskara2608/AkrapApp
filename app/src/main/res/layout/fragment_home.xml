@@ -43,10 +43,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Selamat Pagi"
-                        android:textColor="@color/black"
                         android:textSize="20sp"/>
 
                     <TextView
+                        android:id="@+id/usernameTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
@@ -142,6 +142,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:layout_weight="1"
                         android:orientation="horizontal"
                         android:background="@drawable/rectangle_schedule_detail">
@@ -160,7 +161,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="1 Januari"
+                                android:text="1 Feb"
                                 android:textSize="10sp"
                                 android:textColor="@color/black"
                                 android:textStyle="bold"/>
@@ -180,10 +181,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:layout_marginHorizontal="15dp"
                         android:background="@drawable/rectangle_schedule_detail">
-                        
+
                         <ImageView
                             android:layout_width="14dp"
                             android:layout_height="17dp"
@@ -192,19 +194,18 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
                             android:layout_marginStart="5dp"
                             android:text="Ivan Bhagaskara "
                             android:textStyle="bold"
-                            android:textColor="@color/black"
                             android:textSize="10sp"/>
-                        
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:background="@drawable/rectangle_schedule_detail">
 
@@ -224,7 +225,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="19:30 -"
                                 android:textSize="10sp"
-                                android:textColor="@color/black"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -232,7 +232,6 @@
                                 android:layout_height="wrap_content"
                                 android:text="22:30"
                                 android:textSize="10sp"
-                                android:textColor="@color/black"
                                 android:textStyle="bold"/>
 
                         </LinearLayout>

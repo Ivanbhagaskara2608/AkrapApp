@@ -20,14 +20,19 @@ class PrefManager(var context: Context) {
         editor.commit()
     }
 
-    fun setUserData(fullName: String, phoneNumber: String, birthdate: String, gender: String, username: String, job: String) {
+    fun setUserData(fullName: String, phoneNumber: String, birthdate: String, gender: String, username: String, role: String) {
         editor.putString("fullName", fullName)
         editor.putString("phoneNumber", phoneNumber)
         editor.putString("birthdate", birthdate)
         editor.putString("gender", gender)
         editor.putString("username", username)
-        editor.putString("job", job)
+        editor.putString("role", role)
+        editor.commit()
     }
+
+//    fun setAllUserId(usersId: Array<String>) {
+//        editor
+//    }
 
     fun getToken(): String? {
         return pref.getString("token", "")
@@ -40,11 +45,11 @@ class PrefManager(var context: Context) {
         val birthdate = pref.getString("birthdate", "").toString()
         val gender = pref.getString("gender", "").toString()
         val username = pref.getString("username", "").toString()
-        val job = pref.getString("job", "").toString()
-        return UserData(fullName, phoneNumber, birthdate, gender, username, job)
+        val role = pref.getString("role", "").toString()
+        return UserData(fullName, phoneNumber, birthdate, gender, username, role)
     }
 
-    fun clearToken() {
+    fun clearData() {
         editor.clear()
         editor.commit()
     }

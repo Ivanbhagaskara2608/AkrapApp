@@ -7,8 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
 import com.example.akrapapp.api.RetrofitClient
-import com.example.akrapapp.model.LoginResponse
+import com.example.akrapapp.model.TokenResponse
+import com.example.akrapapp.model.UserResponse
 import com.example.akrapapp.shared_preferences.PrefManager
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -44,23 +46,25 @@ class LoginActivity : AppCompatActivity() {
         requestBody.put("password", password)
 
         if (username.isEmpty()) {
-            usernameEditText.error = "Username is required"
+            usernameEditText.error = "Harap isi Username"
             usernameEditText.requestFocus()
         } else if (password.isEmpty()) {
-            passwordEditText.error = "Password is required"
+            passwordEditText.error = "Harap isi Password"
             passwordEditText.requestFocus()
         } else {
-            RetrofitClient.instance.login(requestBody)
-                .enqueue(object : Callback<LoginResponse> {
+            val jobj = JsonObject()
+            jobj.addProperty("username", username)
+            jobj.addProperty("password", password)
+
+            RetrofitClient.instance.login(jobj).enqueue(object : Callback<TokenResponse>{
                     override fun onResponse(
-                        call: Call<LoginResponse>,
-                        response: Response<LoginResponse>
+                        call: Call<TokenResponse>,
+                        response: Response<TokenResponse>
                     ) {
                         if (response.isSuccessful) {
                             prefManager.setToken(response.body()!!.token)
-                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            saveUserData()
+                            Toast.makeText(this@LoginActivity, response.body()!!.token, Toast.LENGTH_LONG).show()
                         } else {
                             // Respon gagal
                             val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
@@ -70,12 +74,39 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(this@LoginActivity, t.message.toString(), Toast.LENGTH_LONG).show()
+                    override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+                        Toast.makeText(this@LoginActivity, "Username or Password is wrong" , Toast.LENGTH_LONG).show()
                         Log.e("API Error", t.message.toString())
                     }
-
                 })
         }
+    }
+
+    private fun saveUserData() {
+        val token = "Bearer ${prefManager.getToken()}"
+
+        RetrofitClient.instance.userData(token).enqueue(object : Callback<UserResponse>{
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                val fullName = response.body()!!.data.fullName
+                val phoneNumber = response.body()!!.data.phoneNumber
+                val birthdate = response.body()!!.data.birthdate
+                val gender = response.body()!!.data.gender
+                val username = response.body()!!.data.username
+                val role = response.body()!!.data.role
+
+                prefManager.setUserData(fullName, phoneNumber, birthdate, gender, username, role)
+                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                intent.putExtra("fullName", fullName)
+                intent.putExtra("fragmentId", "home")
+                startActivity(intent)
+                finish()
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Toast.makeText(this@LoginActivity, t.message.toString() , Toast.LENGTH_LONG).show()
+                Log.e("API Error", t.message.toString())
+            }
+
+        })
     }
 }

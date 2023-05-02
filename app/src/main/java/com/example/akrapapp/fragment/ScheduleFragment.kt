@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.akrapapp.R
 import com.example.akrapapp.adapter.FragmentScheduleAdapter
+import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_schedule.*
 
@@ -22,6 +23,7 @@ class ScheduleFragment : Fragment() {
     private val toBottom: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.to_bottom_anim) }
 
     private var clicked = false
+    private lateinit var prefManager: PrefManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +47,13 @@ class ScheduleFragment : Fragment() {
             }
         }.attach()
 
+        prefManager = PrefManager(requireActivity())
+        val role = prefManager.getUserData().role
+
+        if (role == "member") {
+            editFloatingButton.visibility = View.GONE
+        }
+
 //        change icon and background color
         editFloatingButton.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orange))
         editFloatingButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
@@ -66,10 +75,11 @@ class ScheduleFragment : Fragment() {
     private fun onAddButtonClicked() {
         setVisibility(clicked)
         setAnimation(clicked)
+        setClickable(clicked)
         clicked = !clicked
     }
 
-    private fun setAnimation(clicked: Boolean) {
+    private fun setVisibility(clicked: Boolean) {
         if (!clicked) {
             addFloatingButton.visibility = View.VISIBLE
             deleteFloatingButton.visibility = View.VISIBLE
@@ -79,7 +89,7 @@ class ScheduleFragment : Fragment() {
         }
     }
 
-    private fun setVisibility(clicked: Boolean) {
+    private fun setAnimation(clicked: Boolean) {
         if (!clicked) {
             addFloatingButton.startAnimation(fromBottom)
             deleteFloatingButton.startAnimation(fromBottom)
@@ -88,6 +98,16 @@ class ScheduleFragment : Fragment() {
             addFloatingButton.startAnimation(toBottom)
             deleteFloatingButton.startAnimation(toBottom)
             editFloatingButton.startAnimation(rotateClose)
+        }
+    }
+
+    private fun setClickable(clicked: Boolean) {
+        if (!clicked) {
+            addFloatingButton.isClickable = true
+            deleteFloatingButton.isClickable = true
+        } else {
+            addFloatingButton.isClickable = false
+            deleteFloatingButton.isClickable = false
         }
     }
 }

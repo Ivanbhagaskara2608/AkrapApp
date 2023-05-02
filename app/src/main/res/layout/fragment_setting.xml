@@ -1,15 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    tools:context=".fragment.SettingFragment">
+    tools:context=".fragment.SettingFragment"
+    tools:ignore="HardcodedText">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="setting" />
+        android:layout_marginTop="147dp"
+        android:paddingTop="160dp"
+        android:paddingHorizontal="60dp"
+        android:background="@drawable/rectangle_top_50">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privasi &#38; Keamanan"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/changePasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/changePasswordImageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/password"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/changePasswordTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/changePasswordTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@id/changePasswordImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Ganti Password"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/changePasswordImageButton"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_back_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/privacyLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/privacyImageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/insurance"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/privacyTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/privacyTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@id/privacyImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Privasi &#38; Keamanan"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/privacyImageButton"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_back_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Tentang Aplikasi"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/aboutLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/aboutImageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/information"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/aboutTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/aboutTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@id/aboutImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Tentang Aplikasi"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/aboutImageButton"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_back_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ratingLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/ratingImageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/star"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ratingTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/ratingTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@id/ratingImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Beri Rating"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/ratingImageButton"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_back_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/reportLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/reportImageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/faq"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/reportTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/reportTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@id/reportImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Laporkan Bug"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/reportImageButton"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_back_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/logoutLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
+
+                <ImageView
+                    android:id="@+id/logoutImageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/emergency_exit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/logoutTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/logoutTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@id/logoutImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:text="Keluar Akun"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/logoutImageButton"
+                    android:layout_width="11dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/icon_back_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="60dp"
+        android:paddingVertical="25dp"
+        android:paddingHorizontal="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/rectangle_card_50"
+        android:gravity="center"
+        android:elevation="20dp">
+
+        <ImageButton
+            android:layout_width="11dp"
+            android:layout_height="18dp"
+            android:layout_gravity="end"
+            android:background="@drawable/icon_back_black"/>
+
+        <ImageView
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:src="@drawable/example_profile_image"/>
+
+        <TextView
+            android:id="@+id/usernameTextViewSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="FULLNAME"
+            android:textStyle="bold"
+            android:textSize="22sp"/>
+        
+        <TextView
+            android:id="@+id/jobTextViewSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="job"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/statusTextViewSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Status"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -19,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         if (prefManager.getToken()!!.isNotEmpty()) {
             Handler().postDelayed({
                 // Launch the main activity
-                startActivity(Intent(this, HomeActivity::class.java))
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("fragmentId", "home")
+                startActivity(intent)
                 // Close the splash screen activity
                 finish()
             }, splashDelay)

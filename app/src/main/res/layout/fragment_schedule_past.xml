@@ -8,21 +8,23 @@
     android:background="@color/orange"
     tools:context=".fragment.SchedulePastFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/schedulePastRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="PAST FRAGMENT" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="25dp"
+        tools:listitem="@layout/card_view_schedule"
+        tools:itemCount="4"/>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/scheduleFloatingButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:layout_marginEnd="30dp"-->
-<!--        app:maxImageSize="30dp"-->
-<!--        app:srcCompat="@drawable/baseline_create_24"-->
-<!--        app:fabCustomSize="50dp"-->
-<!--        android:layout_alignParentEnd="true"/>-->
+    <TextView
+        android:id="@+id/schedulePastResponseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
