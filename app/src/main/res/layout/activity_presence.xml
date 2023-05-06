@@ -23,30 +23,32 @@
         app:frameThickness="5dp"
         app:frameCornersRadius="1dp"/>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutPresence"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="25dp"
+        android:paddingStart="25dp">
 
         <ImageButton
             android:id="@+id/backPresence"
             android:layout_width="15dp"
             android:layout_height="24dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/icon_back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="88dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:text="Pindai QR Code"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="24sp"/>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/qrCodeButton"

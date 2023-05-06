@@ -14,6 +14,7 @@
         android:layout_marginTop="147dp"
         android:paddingTop="160dp"
         android:paddingHorizontal="60dp"
+        android:scrollbars="none"
         android:background="@drawable/rectangle_top_50">
 
         <LinearLayout
@@ -305,6 +306,7 @@
         android:elevation="20dp">
 
         <ImageButton
+            android:id="@+id/profileImageButton"
             android:layout_width="11dp"
             android:layout_height="18dp"
             android:layout_gravity="end"
@@ -313,7 +315,7 @@
         <ImageView
             android:layout_width="88dp"
             android:layout_height="88dp"
-            android:src="@drawable/example_profile_image"/>
+            android:src="@drawable/person"/>
 
         <TextView
             android:id="@+id/usernameTextViewSetting"
@@ -325,7 +327,7 @@
             android:textSize="22sp"/>
         
         <TextView
-            android:id="@+id/jobTextViewSetting"
+            android:id="@+id/roleTextViewSetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -338,6 +340,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Status"
+            android:textColor="@color/green"
             android:textSize="14sp"
             android:textStyle="bold"/>
 

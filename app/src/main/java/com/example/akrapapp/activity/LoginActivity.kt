@@ -93,10 +93,11 @@ class LoginActivity : AppCompatActivity() {
                 val gender = response.body()!!.data.gender
                 val username = response.body()!!.data.username
                 val role = response.body()!!.data.role
+                val status = response.body()!!.data.status
 
-                prefManager.setUserData(fullName, phoneNumber, birthdate, gender, username, role)
+                prefManager.setUserData(fullName, phoneNumber, birthdate, gender, username, role, status)
                 val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                intent.putExtra("fullName", fullName)
+                intent.putExtra("username", username)
                 intent.putExtra("fragmentId", "home")
                 startActivity(intent)
                 finish()

@@ -30,7 +30,7 @@
                 <ImageView
                     android:layout_width="65dp"
                     android:layout_height="65dp"
-                    android:src="@drawable/example_profile_image"/>
+                    android:src="@drawable/person"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -40,6 +40,7 @@
                     android:layout_marginTop="15dp">
 
                     <TextView
+                        android:id="@+id/greetingTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Selamat Pagi"
@@ -107,140 +108,25 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/scheduleTodayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:text="Tidak ada acara hari ini"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/scheduleTodayRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="103dp"
+                android:layout_height="wrap_content"
+
                 android:layout_marginTop="15dp"
-                android:orientation="vertical"
-                android:background="@drawable/bg_schedule">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_schedule_name">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ARISAN"
-                        android:textStyle="bold"
-                        android:textSize="13sp"
-                        android:textColor="@color/white"/>
-
-                </LinearLayout>
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="22dp"
-                    android:layout_marginHorizontal="21dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:background="@drawable/rectangle_schedule_detail">
-
-                        <ImageView
-                            android:layout_width="17dp"
-                            android:layout_height="17dp"
-                            android:src="@drawable/icon_calendar_black"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginStart="5dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1 Feb"
-                                android:textSize="10sp"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2023"
-                                android:textSize="10sp"
-                                android:textColor="@color/black"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_marginHorizontal="15dp"
-                        android:background="@drawable/rectangle_schedule_detail">
-
-                        <ImageView
-                            android:layout_width="14dp"
-                            android:layout_height="17dp"
-                            android:src="@drawable/icon__location"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="Ivan Bhagaskara "
-                            android:textStyle="bold"
-                            android:textSize="10sp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:background="@drawable/rectangle_schedule_detail">
-
-                        <ImageView
-                            android:layout_width="17dp"
-                            android:layout_height="17dp"
-                            android:src="@drawable/icon_clock"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginStart="5dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="19:30 -"
-                                android:textSize="10sp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="22:30"
-                                android:textSize="10sp"
-                                android:textStyle="bold"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
+                tools:listitem="@layout/card_view_schedule"
+                tools:itemCount="2"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

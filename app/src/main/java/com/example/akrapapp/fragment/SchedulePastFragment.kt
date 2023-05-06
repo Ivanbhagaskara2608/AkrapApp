@@ -61,7 +61,7 @@ class SchedulePastFragment : Fragment() {
                         val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id)
                         scheduleList.add(schedule)
                     }
-                    schedulePastRecyclerView.adapter = AdapterSchedule(scheduleList)
+                    schedulePastRecyclerView.adapter = AdapterSchedule("schedule", scheduleList)
                     val layoutManager = LinearLayoutManager(activity)
                     schedulePastRecyclerView.layoutManager = layoutManager
                 } else {

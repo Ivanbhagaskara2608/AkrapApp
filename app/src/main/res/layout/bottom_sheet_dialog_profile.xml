@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="30dp"
+    android:paddingHorizontal="30dp"
+    android:orientation="vertical"
+    android:background="@drawable/rectangle_top_50">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Ubah Username"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/orange"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/updateUsernameInputLayout"
+        style="@style/customInputLayout"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/orange"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/updateUsernameEditText"
+            style="@style/customEditText"
+            android:hint="Username"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Username minimal 5 karakter dan maksimal 15 karakter."
+        android:textSize="16sp"
+        android:textColor="@color/red"/>
+
+    <Button
+        android:id="@+id/confirmEditUsernameButton"
+        style="@style/customButton"
+        android:backgroundTint="@color/orange"
+        android:layout_marginTop="25dp"
+        android:text="Konfirmasi"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

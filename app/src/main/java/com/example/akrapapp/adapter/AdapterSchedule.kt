@@ -17,7 +17,7 @@ import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.activity_register1.*
 
-class AdapterSchedule (private val mList: ArrayList<ItemViewSchedule>) : RecyclerView.Adapter<AdapterSchedule.ViewHolder>(){
+class AdapterSchedule (val fragmentId: String, private val mList: ArrayList<ItemViewSchedule>) : RecyclerView.Adapter<AdapterSchedule.ViewHolder>(){
 
 
 
@@ -48,6 +48,7 @@ class AdapterSchedule (private val mList: ArrayList<ItemViewSchedule>) : Recycle
         val getContext = holder.optionSchedule.context
         val prefManager = PrefManager(getContext)
         val role = prefManager.getUserData().role
+        val fragmentId = fragmentId
 
         holder.subjectSchedule.text = itemsViewModel.activityName
         holder.dateSchedule.text = itemsViewModel.formattedDate
@@ -56,7 +57,7 @@ class AdapterSchedule (private val mList: ArrayList<ItemViewSchedule>) : Recycle
         holder.startTimeSchedule.text = itemsViewModel.formattedStartTime
         holder.endTimeSchedule.text = itemsViewModel.formattedEndTime
 
-        if (role == "admin") {
+        if (role == "admin" && fragmentId == "schedule") {
             holder.optionSchedule.setOnClickListener {
                 val intent = Intent(getContext, ScheduleDetailActivity::class.java)
                 val bundle = Bundle()

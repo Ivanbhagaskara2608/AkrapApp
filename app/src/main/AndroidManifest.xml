@@ -10,12 +10,18 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo_akrap_white"
+        android:icon="@drawable/icon_akrap_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AkrapApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.ListMemberActivity"
             android:exported="false" />

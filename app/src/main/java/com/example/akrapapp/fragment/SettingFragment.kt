@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.akrapapp.R
+import com.example.akrapapp.activity.ChangePasswordActivity
 import com.example.akrapapp.activity.LoginActivity
+import com.example.akrapapp.activity.ProfileActivity
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.TokenResponse
 import com.example.akrapapp.shared_preferences.PrefManager
@@ -32,10 +35,28 @@ class SettingFragment : Fragment() {
 //        init prefManager
         prefManager = PrefManager(requireActivity())
 //        Set card user text
-        usernameTextViewSetting.text = prefManager.getUserData().fullName
-        jobTextViewSetting.text = prefManager.getUserData().role
+        usernameTextViewSetting.text = prefManager.getUserData().username
+        roleTextViewSetting.text = prefManager.getUserData().role
+        if (prefManager.getUserData().status == 1) {
+            statusTextViewSetting.text = "Aktif"
+        } else {
+            statusTextViewSetting.text = "Tidak Aktif"
+            statusTextViewSetting.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+        }
+
+        profileImageButton.setOnClickListener {
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
+            startActivity(intent)
+        }
 
 //        CHANGE PASSWORD
+        changePasswordLayout.setOnClickListener {
+            toChangePassword()
+        }
+
+        changePasswordImageButton.setOnClickListener {
+            toChangePassword()
+        }
 //        PRIVACY & SECURITY
 //        ABOUT
 //        RATING
@@ -44,10 +65,16 @@ class SettingFragment : Fragment() {
         logoutLayout.setOnClickListener {
             logout()
         }
+
         logoutImageButton.setOnClickListener {
             logout()
         }
 
+    }
+
+    private fun toChangePassword() {
+        val intent = Intent(requireActivity(), ChangePasswordActivity::class.java)
+        startActivity(intent)
     }
 
     private fun logout() {
@@ -67,6 +94,7 @@ class SettingFragment : Fragment() {
                     Toast.makeText(requireContext(), response.body()!!.msg, Toast.LENGTH_LONG).show()
 //                    go to LoginActivity
                     val intent = Intent(requireActivity(), LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     requireActivity().finish()
                 }

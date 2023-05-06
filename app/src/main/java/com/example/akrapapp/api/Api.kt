@@ -1,9 +1,6 @@
 package com.example.akrapapp.api
 
-import com.example.akrapapp.model.RegisterResponse
-import com.example.akrapapp.model.ScheduleResponse
-import com.example.akrapapp.model.TokenResponse
-import com.example.akrapapp.model.UserResponse
+import com.example.akrapapp.model.*
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.*
@@ -38,4 +35,24 @@ interface Api {
     fun schedulePast(
         @Header("Authorization") token: String
     ): Call<ScheduleResponse>
+
+    @GET("schedule/today")
+    fun scheduleToday(
+        @Header("Authorization") token: String
+    ): Call<ScheduleResponse>
+
+    @POST("presence")
+    fun presence(
+        @Header("Authorization") token: String, @Body attendanceCode: JsonObject
+    ): Call<PresenceResponse>
+
+    @POST("user/updateUsername")
+    fun updateUsername(
+        @Header("Authorization") token: String, @Body username: JsonObject
+    ): Call<UserResponse>
+
+    @POST("user/changePassword")
+    fun changePassword(
+        @Header("Authorization") token: String, @Body password: JsonObject
+    ): Call<TokenResponse>
 }

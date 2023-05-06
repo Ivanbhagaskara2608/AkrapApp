@@ -20,13 +20,14 @@ class PrefManager(var context: Context) {
         editor.commit()
     }
 
-    fun setUserData(fullName: String, phoneNumber: String, birthdate: String, gender: String, username: String, role: String) {
+    fun setUserData(fullName: String, phoneNumber: String, birthdate: String, gender: String, username: String, role: String, status: Int) {
         editor.putString("fullName", fullName)
         editor.putString("phoneNumber", phoneNumber)
         editor.putString("birthdate", birthdate)
         editor.putString("gender", gender)
         editor.putString("username", username)
         editor.putString("role", role)
+        editor.putInt("status", status)
         editor.commit()
     }
 
@@ -46,7 +47,8 @@ class PrefManager(var context: Context) {
         val gender = pref.getString("gender", "").toString()
         val username = pref.getString("username", "").toString()
         val role = pref.getString("role", "").toString()
-        return UserData(fullName, phoneNumber, birthdate, gender, username, role)
+        val status = pref.getInt("status", -1)
+        return UserData(fullName, phoneNumber, birthdate, gender, username, role, status)
     }
 
     fun clearData() {

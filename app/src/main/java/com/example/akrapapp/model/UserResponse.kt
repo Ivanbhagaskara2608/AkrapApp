@@ -10,5 +10,6 @@ data class UserData(
     val birthdate: String,
     val gender: String,
     val username: String,
-    val role: String
+    val role: String,
+    val status: Int
 )
