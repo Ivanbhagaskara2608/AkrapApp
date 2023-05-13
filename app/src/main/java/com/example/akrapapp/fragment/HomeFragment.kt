@@ -12,7 +12,7 @@ import com.example.akrapapp.R
 import com.example.akrapapp.adapter.AdapterSchedule
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.ItemViewSchedule
-import com.example.akrapapp.model.ScheduleResponse
+import com.example.akrapapp.model.GetAllScheduleResponse
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONObject
@@ -62,10 +62,10 @@ class HomeFragment : Fragment() {
     private fun scheduleToday() {
         val token = "Bearer ${prefManager.getToken()}"
 
-        RetrofitClient.instance.scheduleToday(token).enqueue(object : Callback<ScheduleResponse> {
+        RetrofitClient.instance.scheduleToday(token).enqueue(object : Callback<GetAllScheduleResponse> {
             override fun onResponse(
-                call: Call<ScheduleResponse>,
-                response: Response<ScheduleResponse>
+                call: Call<GetAllScheduleResponse>,
+                response: Response<GetAllScheduleResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()!!.data
@@ -81,20 +81,22 @@ class HomeFragment : Fragment() {
                         val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id)
                         scheduleList.add(schedule)
                     }
-                    scheduleTodayRecyclerView.adapter = AdapterSchedule("home", scheduleList)
+                    scheduleTodayRecyclerView.adapter = AdapterSchedule(requireContext(), "home", scheduleList)
                     val layoutManager = LinearLayoutManager(activity)
                     scheduleTodayRecyclerView.layoutManager = layoutManager
+//                    val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+//                    scheduleTodayRecyclerView.layoutManager = layoutManager
                 } else {
                     // Respon gagal
                     val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
                     val messageError = jsonObj.getString("message")
 
                     scheduleTodayRecyclerView.visibility = View.GONE
-                    scheduleTodayTextView.visibility = View.VISIBLE
+                    scheduleTodayTextView.visibility = View.GONE
                 }
             }
 
-            override fun onFailure(call: Call<ScheduleResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetAllScheduleResponse>, t: Throwable) {
 //                get and show error response if there's error on API or server
                 Toast.makeText(requireContext(), t.message.toString() , Toast.LENGTH_LONG).show()
                 Log.e("API Error", t.message.toString())

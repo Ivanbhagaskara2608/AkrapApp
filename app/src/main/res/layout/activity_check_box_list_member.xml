@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:paddingTop="14dp"
+    tools:ignore="HardcodedText"
+    tools:context=".activity.CheckBoxListMemberActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/checkBoxMemberCardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/orange"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backCheckBoxMemberImageButton"
+            android:layout_width="15dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/icon_back"/>
+
+        <SearchView
+            android:id="@+id/checkBoxMemberSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:queryHint="Cari member ..."
+            android:iconifiedByDefault="false"
+            android:queryBackground="@color/zxing_transparent"
+            android:theme="@style/SearchViewTheme"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rectangle_top_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxMemberCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/selectAllLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="17dp"
+            android:paddingHorizontal="25dp"
+            android:background="@drawable/rectangle_top_15"
+            android:backgroundTint="@color/brown">
+
+            <TextView
+                android:id="@+id/selectAllTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Semua"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/selectAllCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/checkBoxMemberResponseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:text="Member tidak ditemukan"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/checkBoxMemberRecyclerView"
+            android:layout_below="@+id/selectAllLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/card_view_checkbox_member"
+            tools:itemCount="7"/>
+
+        <Button
+            android:id="@+id/selectMemberButton"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="@color/brown"
+            style="@style/customButton"
+            android:text="Buat Acara"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

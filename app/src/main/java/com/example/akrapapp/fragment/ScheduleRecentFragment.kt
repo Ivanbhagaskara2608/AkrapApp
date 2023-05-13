@@ -12,7 +12,7 @@ import com.example.akrapapp.R
 import com.example.akrapapp.adapter.AdapterSchedule
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.ItemViewSchedule
-import com.example.akrapapp.model.ScheduleResponse
+import com.example.akrapapp.model.GetAllScheduleResponse
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_schedule_recent.*
 import org.json.JSONObject
@@ -43,10 +43,10 @@ class ScheduleRecentFragment : Fragment() {
     private fun showScheduleRecent() {
         val token = "Bearer ${prefManager.getToken()}"
 
-        RetrofitClient.instance.scheduleRecent(token).enqueue(object : Callback<ScheduleResponse>{
+        RetrofitClient.instance.scheduleRecent(token).enqueue(object : Callback<GetAllScheduleResponse>{
             override fun onResponse(
-                call: Call<ScheduleResponse>,
-                response: Response<ScheduleResponse>
+                call: Call<GetAllScheduleResponse>,
+                response: Response<GetAllScheduleResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()!!.data
@@ -62,7 +62,7 @@ class ScheduleRecentFragment : Fragment() {
                         val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id)
                         scheduleList.add(schedule)
                     }
-                    scheduleRecentRecyclerView.adapter = AdapterSchedule("schedule", scheduleList)
+                    scheduleRecentRecyclerView.adapter = AdapterSchedule(requireContext(), "schedule", scheduleList)
                     val layoutManager = LinearLayoutManager(activity)
                     scheduleRecentRecyclerView.layoutManager = layoutManager
                 } else {
@@ -75,7 +75,7 @@ class ScheduleRecentFragment : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<ScheduleResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetAllScheduleResponse>, t: Throwable) {
 //                get and show error response if there's error on API or server
                 Toast.makeText(requireContext(), t.message.toString() , Toast.LENGTH_LONG).show()
                 Log.e("API Error", t.message.toString())

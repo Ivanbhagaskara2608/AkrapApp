@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="25dp"
+    android:paddingHorizontal="25dp"
+    android:background="@color/orange"
+    tools:ignore="HardcodedText"
+    tools:context=".activity.AddScheduleActivity">
+
+    <ImageButton
+        android:id="@+id/backAddScheduleImageButton"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:background="@drawable/icon_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/addScheduleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buat Acara"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutAddSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="30dp"
+        android:paddingHorizontal="25dp"
+        android:background="@drawable/rectangle_radius_15"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addScheduleTextView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Acara"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addScheduleNameInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addScheduleNameEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Tanggal"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateAddScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange"
+            android:hint="-- Klik untuk memilih Tanggal --">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dateAddScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Lokasi"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/locationAddScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange"
+            android:hint="-- Klik untuk memilih Lokasi --">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/locationAddScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Jam Mulai"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startTimeAddScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange"
+            android:hint="-- Klik untuk memilih Jam Mulai --">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/startTimeAddScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Jam Selesai"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/endTimeAddScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange"
+            android:hint="-- Klik untuk memilih Jam Berakhir --">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/endTimeAddScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addScheduleButton"
+        style="@style/customButton"
+        android:text="Lanjutkan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAddSchedule" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

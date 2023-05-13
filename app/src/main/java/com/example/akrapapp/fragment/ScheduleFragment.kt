@@ -1,5 +1,6 @@
 package com.example.akrapapp.fragment
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.akrapapp.R
+import com.example.akrapapp.activity.AddScheduleActivity
 import com.example.akrapapp.adapter.FragmentScheduleAdapter
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.android.material.tabs.TabLayoutMediator
@@ -63,7 +65,9 @@ class ScheduleFragment : Fragment() {
         }
 
         addFloatingButton.setOnClickListener {
-            Toast.makeText(requireContext(), "add button clicked", Toast.LENGTH_SHORT).show()
+            prefManager.clearScheduleData()
+            val intent = Intent(requireActivity(), AddScheduleActivity::class.java)
+            startActivity(intent)
         }
 
         deleteFloatingButton.setOnClickListener {

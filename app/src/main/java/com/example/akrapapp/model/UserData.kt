@@ -1,10 +1,7 @@
 package com.example.akrapapp.model
 
-data class UserResponse(
-    val message: String,
-    val data: UserData
-)
 data class UserData(
+    val userId: Int,
     val fullName: String,
     val phoneNumber: String,
     val birthdate: String,

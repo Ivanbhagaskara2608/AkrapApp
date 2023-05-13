@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="25dp"
+    android:paddingHorizontal="25dp"
+    android:background="@color/orange"
+    tools:ignore="HardcodedText"
+    tools:context=".activity.EditScheduleActivity">
+
+    <ImageButton
+        android:id="@+id/backEditScheduleImageButton"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:background="@drawable/icon_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/editScheduleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Acara"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutEditSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="30dp"
+        android:paddingHorizontal="25dp"
+        android:background="@drawable/rectangle_radius_15"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editScheduleTextView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Tanggal"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateEditScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dateEditScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"
+                android:text="2023/05/20"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Lokasi"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/locationEditScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/locationEditScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"
+                android:text="ivan"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Jam Mulai"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startTimeEditScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/startTimeEditScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"
+                android:text="19:00"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Jam Selesai"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/endTimeEditScheduleInputLayout"
+            style="@style/customInputLayout"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/orange">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/endTimeEditScheduleEditText"
+                style="@style/customEditText"
+                android:paddingTop="10dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"
+                android:text="22:30"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/editScheduleButton"
+        style="@style/customButton"
+        android:text="Edit Acara"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEditSchedule" />
+
+    <Button
+        android:id="@+id/storeScheduleButton"
+        style="@style/customButton"
+        android:layout_marginTop="10dp"
+        android:text="Simpan Acara Selesai"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editScheduleButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

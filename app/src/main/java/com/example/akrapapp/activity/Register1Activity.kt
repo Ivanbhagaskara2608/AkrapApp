@@ -14,10 +14,6 @@ class Register1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register1)
 
-        val cal = Calendar.getInstance()
-        val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)
-        val day = cal.get(Calendar.DAY_OF_MONTH)
         val genderList = listOf("Laki - laki", "Perempuan")
         val genderAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genderList)
         var getGender: String? = null
@@ -33,12 +29,15 @@ class Register1Activity : AppCompatActivity() {
 
         birthdateEditText.setOnClickListener {
             birthdateInputLayout.isHintEnabled = false
-            val dpd = DatePickerDialog(this, android.R.style.Theme_Material_Dialog,
-                DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+            val cal = Calendar.getInstance()
+            val year = cal.get(Calendar.YEAR)
+            val month = cal.get(Calendar.MONTH)
+            val day = cal.get(Calendar.DAY_OF_MONTH)
+
+            DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
                 val mMonth1 = mMonth + 1
                 birthdateEditText.setText("" + mYear + "/" + mMonth1 + "/" + mDay)
-            }, year, month, day)
-            dpd.show()
+            }, year, month, day).show()
         }
 
         register1Button.setOnClickListener {

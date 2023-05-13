@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
 import com.example.akrapapp.api.RetrofitClient
+import com.example.akrapapp.model.GetUserDataResponse
 import com.example.akrapapp.model.TokenResponse
-import com.example.akrapapp.model.UserResponse
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_login.*
@@ -85,8 +85,9 @@ class LoginActivity : AppCompatActivity() {
     private fun saveUserData() {
         val token = "Bearer ${prefManager.getToken()}"
 
-        RetrofitClient.instance.userData(token).enqueue(object : Callback<UserResponse>{
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+        RetrofitClient.instance.userData(token).enqueue(object : Callback<GetUserDataResponse>{
+            override fun onResponse(call: Call<GetUserDataResponse>, response: Response<GetUserDataResponse>) {
+                val userId = response.body()!!.data.userId
                 val fullName = response.body()!!.data.fullName
                 val phoneNumber = response.body()!!.data.phoneNumber
                 val birthdate = response.body()!!.data.birthdate
@@ -95,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                 val role = response.body()!!.data.role
                 val status = response.body()!!.data.status
 
-                prefManager.setUserData(fullName, phoneNumber, birthdate, gender, username, role, status)
+                prefManager.setUserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status)
                 val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                 intent.putExtra("username", username)
                 intent.putExtra("fragmentId", "home")
@@ -103,7 +104,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
 
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) {
                 Toast.makeText(this@LoginActivity, t.message.toString() , Toast.LENGTH_LONG).show()
                 Log.e("API Error", t.message.toString())
             }

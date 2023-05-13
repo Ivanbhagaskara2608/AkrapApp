@@ -2,21 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/layoutCardMember"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="HardcodedText"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/layoutCheckBoxMember"
+    tools:ignore="HardcodedText">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:paddingHorizontal="25dp"
         app:layout_constraintTop_toTopOf="parent">
-        
+
         <ImageView
-            android:id="@+id/imageMemberImageView"
+            android:id="@+id/imageCBMemberImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/person"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/usernameMemberTextView"
+            android:id="@+id/usernameCBMemberTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -33,9 +33,20 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageMemberImageView"
+            app:layout_constraintStart_toEndOf="@+id/imageCBMemberImageView"
             app:layout_constraintTop_toTopOf="parent" />
-        
+
+        <CheckBox
+            android:id="@+id/selectCBMemberCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/brown"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View

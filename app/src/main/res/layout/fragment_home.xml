@@ -101,6 +101,7 @@
             android:paddingHorizontal="25dp">
 
             <TextView
+                android:id="@+id/scheduleTodayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Acara Hari Ini"
@@ -108,22 +109,10 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"/>
 
-            <TextView
-                android:id="@+id/scheduleTodayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                android:text="Tidak ada acara hari ini"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/scheduleTodayRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="15dp"
                 tools:listitem="@layout/card_view_schedule"
                 tools:itemCount="2"/>

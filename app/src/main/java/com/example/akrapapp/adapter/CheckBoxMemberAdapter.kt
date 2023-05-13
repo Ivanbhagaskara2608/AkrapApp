@@ -1,0 +1,60 @@
+package com.example.akrapapp.adapter
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.akrapapp.R
+import com.example.akrapapp.model.UserData
+import com.example.akrapapp.shared_preferences.PrefManager
+import com.google.gson.JsonArray
+
+class CheckBoxMemberAdapter (val context: Context, private var mList: ArrayList<UserData>) : RecyclerView.Adapter<CheckBoxMemberAdapter.ViewHolder>() {
+
+    private val checkedItems = JsonArray()
+    private lateinit var prefManager: PrefManager
+
+    class ViewHolder (ItemView: View): RecyclerView.ViewHolder(ItemView) {
+        val imageMember: ImageView = ItemView.findViewById(R.id.imageCBMemberImageView)
+        val usernameMember: TextView = ItemView.findViewById(R.id.usernameCBMemberTextView)
+        val checkBox: CheckBox = ItemView.findViewById(R.id.selectCBMemberCheckBox)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_view_checkbox_member, parent, false)
+
+        return ViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        return mList.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val itemsViewModel = mList[position]
+        prefManager = PrefManager(context)
+
+        holder.imageMember.setImageResource(R.drawable.person)
+        holder.usernameMember.text = itemsViewModel.username
+        holder.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                checkedItems.add(itemsViewModel.userId)
+            } else {
+                checkedItems.remove(itemsViewModel.userId)
+            }
+        }
+    }
+
+    fun setFilteredList(mList: ArrayList<UserData>) {
+        this.mList = mList
+        notifyDataSetChanged()
+    }
+
+    fun getCheckedItems(): JsonArray {
+        return checkedItems
+    }
+}

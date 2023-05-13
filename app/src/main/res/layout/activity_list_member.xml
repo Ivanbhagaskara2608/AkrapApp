@@ -4,78 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="25dp"
     android:background="@color/orange"
+    android:paddingTop="14dp"
     tools:ignore="HardcodedText"
     tools:context=".activity.ListMemberActivity">
 
-    <ImageButton
-        android:id="@+id/backListMemberImageButton"
-        android:layout_width="15dp"
-        android:layout_height="24dp"
-        android:layout_marginHorizontal="25dp"
-        android:background="@drawable/icon_back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/listMemberTextView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/listMemberCardView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Member"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:backgroundTint="@color/orange"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backListMemberImageButton"
+            android:layout_width="15dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/icon_back"/>
+
+        <SearchView
+            android:id="@+id/listMemberSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:queryHint="Cari member ..."
+            android:iconifiedByDefault="false"
+            android:queryBackground="@color/zxing_transparent"
+            android:theme="@style/SearchViewTheme"/>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/rectangle_top_15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listMemberTextView">
+        app:layout_constraintTop_toBottomOf="@+id/listMemberCardView">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/selectAllLayout"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/listMemberResponseTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="17dp"
-            android:paddingHorizontal="25dp"
-            android:background="@drawable/rectangle_top_15"
-            android:backgroundTint="@color/brown">
-
-            <TextView
-                android:id="@+id/selectAllTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pilih Semua"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <CheckBox
-                android:id="@+id/selectAllCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/white"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:text="Member tidak ditemukan"
+            android:textStyle="bold"
+            android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listMemberRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/selectAllLayout"
             tools:listitem="@layout/card_view_member"
             tools:itemCount="7"/>
 
