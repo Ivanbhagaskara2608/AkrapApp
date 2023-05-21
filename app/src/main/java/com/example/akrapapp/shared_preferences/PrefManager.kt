@@ -60,8 +60,17 @@ class PrefManager(var context: Context) {
         editor.commit()
     }
 
+    fun setBiometric(biometric: Boolean) {
+        editor.putBoolean("biometric", biometric)
+        editor.commit()
+    }
+
     fun getToken(): String? {
         return pref.getString("token", "")
+    }
+
+    fun getBiometric(): Boolean {
+        return pref.getBoolean("biometric", false)
     }
 
     fun getUserData(): UserData {

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="40dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginHorizontal="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/warning_sign"/>
+
+        <TextView
+            android:id="@+id/titleBiometricTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="45dp"
+            android:text="TITLE"
+            android:textColor="@color/orange"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/subtitleBiometricTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:textAlignment="center"
+            android:text="SUBTITLE"
+            android:textSize="12sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/yesBiometricButton"
+                style="@style/customButton"
+                android:layout_width="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="15dp"
+                android:text="Ya"
+                android:textSize="13sp"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/noBiometricButton"
+                style="@style/customButton"
+                android:layout_width="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:layout_marginTop="0dp"
+                android:text="Tidak"
+                android:textSize="13sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

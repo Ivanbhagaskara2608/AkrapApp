@@ -19,6 +19,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.akrapapp.R
@@ -31,10 +33,14 @@ import kotlinx.android.synthetic.main.delete_privacy_code_dialog.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.Executor
 
 class PrivacyCodeActivity : AppCompatActivity() {
 
     private lateinit var prefManager: PrefManager
+    private lateinit var executor: Executor
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,25 +48,11 @@ class PrivacyCodeActivity : AppCompatActivity() {
 
         prefManager = PrefManager(this)
         val task = intent.getStringExtra("task")
-
-        when (task) {
-            "openApp" -> {
-                passCodeTaskTextView.text = "Masukkan Kode Privasi Akun Anda untuk masuk aplikasi"
-            }
-            "changePassCode" -> {
-                passCodeTaskTextView.text = "Masukkan Kode Privasi Akun anda saat ini, untuk mengganti Kode Privasi yang baru"
-            }
-            "nonActive" -> {
-                passCodeTaskTextView.text = "Masukkan Kode Privasi Akun anda saat ini, untuk menonaktfkan Kode Kunci Privasi"
-            }
-        }
+        val biometric = prefManager.getBiometric()
 
         backPrivacyCodeImageButton.setOnClickListener {
             finish()
         }
-
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(code1, InputMethodManager.SHOW_IMPLICIT)
 
         moveEditText(code1, code2, code1)
         moveEditText(code2, code3, code1)
@@ -71,6 +63,22 @@ class PrivacyCodeActivity : AppCompatActivity() {
 
         clearEditText()
 
+        when (task) {
+            "openApp" -> {
+                passCodeTaskTextView.text = "Masukkan Kode Privasi Akun Anda untuk masuk aplikasi"
+                if (biometric) {
+                    code1.clearFocus()
+                    showBiometricAuthentication()
+                }
+            }
+            "changePassCode" -> {
+                passCodeTaskTextView.text = "Masukkan Kode Privasi Akun anda saat ini, untuk mengganti Kode Privasi yang baru"
+            }
+            "nonActive" -> {
+                passCodeTaskTextView.text = "Masukkan Kode Privasi Akun anda saat ini, untuk menonaktfkan Kode Kunci Privasi"
+            }
+        }
+
         rootLayoutPrivacyCode.setOnClickListener {
             // Dapatkan instance InputMethodManager dari sistem
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -80,6 +88,47 @@ class PrivacyCodeActivity : AppCompatActivity() {
 
             // Sembunyikan keyboard menggunakan token window
             imm.hideSoftInputFromWindow(windowToken, 0)
+        }
+    }
+
+    private fun showBiometricAuthentication() {
+        executor = ContextCompat.getMainExecutor(this)
+        biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                super.onAuthenticationError(errorCode, errString)
+                Toast.makeText(applicationContext, errString, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                super.onAuthenticationSucceeded(result)
+                val intent = Intent(this@PrivacyCodeActivity, HomeActivity::class.java)
+                intent.putExtra("fragmentId", "home")
+                startActivity(intent)
+                finish()
+            }
+
+//            override fun onAuthenticationFailed() { super.onAuthenticationFailed()
+//                Toast.makeText(applicationContext, "Autentikasi Kunci Biometrik gagal", Toast.LENGTH_SHORT).show()
+//            }
+        })
+
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Kunci Biometrik")
+            .setSubtitle("AKRAP")
+            .setDescription("Pindai Sidik Jari untuk masuk kedalam aplikasi")
+            .setNegativeButtonText("Batal")
+            .build()
+
+        val biometricManager = BiometricManager.from(this)
+        when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
+            BiometricManager.BIOMETRIC_SUCCESS ->
+                biometricPrompt.authenticate(promptInfo)
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
+                Toast.makeText(this, "Tidak ada Fitur Biometrik pada perangkat ini", Toast.LENGTH_LONG).show()
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
+                Toast.makeText(this, "Fitur Biometrik tidak tersedia saat ini", Toast.LENGTH_LONG).show()
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->
+                Toast.makeText(this, "Tidak ada biometrik yang terdaftar, Periksa pada pengaturan perangkat anda", Toast.LENGTH_LONG).show()
         }
     }
 
