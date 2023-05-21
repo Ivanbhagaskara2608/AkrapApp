@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.akrapapp.R
 import com.example.akrapapp.adapter.AdapterSchedule
 import com.example.akrapapp.api.RetrofitClient
-import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.model.GetAllScheduleResponse
+import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_schedule_recent.*
 import org.json.JSONObject
@@ -58,8 +58,9 @@ class ScheduleRecentFragment : Fragment() {
                         val endTime = data[i].endTime
                         val location = data[i].location
                         val id = data[i].scheduleId
+                        val status = data[i].status
 
-                        val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id)
+                        val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id, status)
                         scheduleList.add(schedule)
                     }
                     scheduleRecentRecyclerView.adapter = AdapterSchedule(requireContext(), "schedule", scheduleList)
@@ -77,7 +78,7 @@ class ScheduleRecentFragment : Fragment() {
 
             override fun onFailure(call: Call<GetAllScheduleResponse>, t: Throwable) {
 //                get and show error response if there's error on API or server
-                Toast.makeText(requireContext(), t.message.toString() , Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
                 Log.e("API Error", t.message.toString())
             }
 

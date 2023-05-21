@@ -8,5 +8,6 @@ data class UserData(
     val gender: String,
     val username: String,
     val role: String,
-    val status: Int
+    val status: String,
+    val privacyCode: String?
 )

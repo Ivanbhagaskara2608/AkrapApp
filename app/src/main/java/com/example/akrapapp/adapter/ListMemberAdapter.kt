@@ -14,15 +14,16 @@ import com.example.akrapapp.R
 import com.example.akrapapp.activity.EditScheduleActivity
 import com.example.akrapapp.model.UserData
 import com.example.akrapapp.shared_preferences.PrefManager
+import kotlinx.android.synthetic.main.card_view_member.view.*
 
 class ListMemberAdapter (val context: Context, private var mList: ArrayList<UserData>, val activity: String) : RecyclerView.Adapter<ListMemberAdapter.ViewHolder>() {
 
     private lateinit var prefManager: PrefManager
 
     class ViewHolder (ItemView: View): RecyclerView.ViewHolder(ItemView) {
-        val imageMember: ImageView = ItemView.findViewById(R.id.imageMemberImageView)
-        val usernameMember: TextView = ItemView.findViewById(R.id.usernameMemberTextView)
-        val cardMember: LinearLayout = ItemView.findViewById(R.id.layoutCardMember)
+        val imageMember: ImageView = ItemView.imageMemberImageView
+        val usernameMember: TextView = ItemView.usernameMemberTextView
+        val cardMember: LinearLayout = ItemView.layoutCardMember
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

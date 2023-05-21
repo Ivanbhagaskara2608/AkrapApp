@@ -1,9 +1,13 @@
 package com.example.akrapapp.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class ItemViewSchedule(val date: String, val activityName: String, val startTime: String, val attendanceCode: String, val endTime: String, val location: String, val scheduleId: Int) {
+@Parcelize
+data class ItemViewSchedule(val date: String, val activityName: String, val startTime: String, val attendanceCode: String, val endTime: String, val location: String, val scheduleId: Int, var status: String) :
+    Parcelable {
     val sdfDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     val parseDate = sdfDate.parse(date)
     val formattedDate = SimpleDateFormat("dd MMM").format(parseDate)

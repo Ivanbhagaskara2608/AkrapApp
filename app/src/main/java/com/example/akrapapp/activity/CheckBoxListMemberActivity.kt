@@ -14,10 +14,12 @@ import com.example.akrapapp.adapter.CheckBoxMemberAdapter
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.GetAllUsersResponse
 import com.example.akrapapp.model.GetScheduleDataResponse
+import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.model.UserData
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_check_box_list_member.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -97,13 +99,21 @@ class CheckBoxListMemberActivity : AppCompatActivity() {
                     val endTime = data.endTime
                     val location = data.location
                     val id = data.scheduleId
+                    val status = data.status
 
-                    prefManager.setScheduleData(date, activityName, startTime, attdCode, endTime, location, id)
+                    val formatSchedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id, status)
+                    prefManager.setScheduleData(date, activityName, formatSchedule.formattedStartTime, attdCode, formatSchedule.formattedEndTime, location, id, status)
 
                     Toast.makeText(this@CheckBoxListMemberActivity, response.body()!!.message, Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this@CheckBoxListMemberActivity, ScheduleDetailActivity::class.java)
                     startActivity(intent)
+                } else {
+                    // Respon gagal
+                    val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
+                    val messageError = jsonObj.getString("message")
+
+                    Toast.makeText(this@CheckBoxListMemberActivity, messageError, Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -156,9 +166,10 @@ class CheckBoxListMemberActivity : AppCompatActivity() {
                         val username = data[i].username
                         val role = data[i].role
                         val status = data[i].status
+                        val privacyCode = data[i].privacyCode
 
 
-                        val member = UserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status)
+                        val member = UserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
                         memberList.add(member)
                     }
 

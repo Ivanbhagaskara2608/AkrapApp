@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
 import com.example.akrapapp.R
 import com.example.akrapapp.api.RetrofitClient
-import com.example.akrapapp.model.MessageResponse
+import com.example.akrapapp.model.MessageDataResponse
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_presence.*
@@ -68,10 +68,10 @@ class PresenceActivity : AppCompatActivity() {
                 val jobj = JsonObject()
                 jobj.addProperty("attendance_code", it.text)
 
-                RetrofitClient.instance.presence(token, jobj).enqueue(object : Callback<MessageResponse>{
+                RetrofitClient.instance.presence(token, jobj).enqueue(object : Callback<MessageDataResponse>{
                     override fun onResponse(
-                        call: Call<MessageResponse>,
-                        response: Response<MessageResponse>
+                        call: Call<MessageDataResponse>,
+                        response: Response<MessageDataResponse>
                     ) {
                         if (response.isSuccessful) {
                             Toast.makeText(this@PresenceActivity, response.body()!!.msg, Toast.LENGTH_LONG).show()
@@ -84,7 +84,7 @@ class PresenceActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<MessageDataResponse>, t: Throwable) {
                         Log.e("API Error", t.message.toString())
                     }
 

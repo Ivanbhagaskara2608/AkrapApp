@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/recentMenu"
+        android:title="Acara Terbaru"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/pastMenu"
+        android:title="Acara Selesai"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/datePickerMenu"
+        android:title="Atur Tanggal"
+        app:showAsAction="never"/>
+
+</menu>

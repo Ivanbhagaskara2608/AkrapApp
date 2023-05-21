@@ -91,9 +91,9 @@ class ListMemberActivity : AppCompatActivity() {
                         val username = data[i].username
                         val role = data[i].role
                         val status = data[i].status
+                        val privacyCode = data[i].privacyCode
 
-
-                        val member = UserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status)
+                        val member = UserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
                         memberList.add(member)
                     }
 

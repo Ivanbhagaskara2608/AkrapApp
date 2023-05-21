@@ -54,6 +54,7 @@ class AddScheduleActivity : AppCompatActivity() {
             prefManager.clearScheduleData()
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("fragmentId", "schedule")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }
@@ -102,7 +103,7 @@ class AddScheduleActivity : AppCompatActivity() {
             } else if (date.isEmpty()) {
                 dateAddScheduleEditText.error = "Harap isi Tanggal"
                 dateAddScheduleEditText.requestFocus()
-                clearErrorEditText(dateAddScheduleEditText)
+//                clearErrorEditText(dateAddScheduleEditText)
             } else if (location.isEmpty()) {
                 locationAddScheduleEditText.error = "Harap isi Lokasi"
                 locationAddScheduleEditText.requestFocus()

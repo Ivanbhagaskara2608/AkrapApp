@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.GetUserDataResponse
+import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.model.TokenResponse
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.gson.JsonObject
@@ -19,6 +20,7 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var prefManager: PrefManager
+    private var scheduleList = ArrayList<ItemViewSchedule>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -32,8 +34,6 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             login()
-//            val intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
         }
     }
 
@@ -64,18 +64,18 @@ class LoginActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             prefManager.setToken(response.body()!!.token)
                             saveUserData()
-                            Toast.makeText(this@LoginActivity, response.body()!!.token, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@LoginActivity, response.body()!!.msg, Toast.LENGTH_SHORT).show()
                         } else {
                             // Respon gagal
                             val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
                             val messageError = jsonObj.getString("message")
 
-                            Toast.makeText(this@LoginActivity, messageError, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@LoginActivity, messageError, Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
-                        Toast.makeText(this@LoginActivity, "Username or Password is wrong" , Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@LoginActivity, t.message.toString() , Toast.LENGTH_SHORT).show()
                         Log.e("API Error", t.message.toString())
                     }
                 })
@@ -95,8 +95,9 @@ class LoginActivity : AppCompatActivity() {
                 val username = response.body()!!.data.username
                 val role = response.body()!!.data.role
                 val status = response.body()!!.data.status
+                val privacyCode = response.body()!!.data.privacyCode ?: ""
 
-                prefManager.setUserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status)
+                prefManager.setUserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
                 val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                 intent.putExtra("username", username)
                 intent.putExtra("fragmentId", "home")

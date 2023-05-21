@@ -104,6 +104,7 @@
                 android:id="@+id/scheduleTodayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="Acara Hari Ini"
                 android:textSize="24sp"
                 android:textStyle="bold"

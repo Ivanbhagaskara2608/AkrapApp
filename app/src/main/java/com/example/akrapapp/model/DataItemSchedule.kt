@@ -13,5 +13,6 @@ data class DataItemSchedule(
     @SerializedName("end_time")
     val endTime: String,
     val location: String,
-    val scheduleId: Int
+    val scheduleId: Int,
+    val status: String
 )

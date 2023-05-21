@@ -14,7 +14,7 @@ interface Api {
     @POST("register")
     fun register(
         @Body registerRequest: JsonObject
-    ): Call<MessageResponse>
+    ): Call<MessageDataResponse>
 
     @POST("logout")
     fun logout(
@@ -44,7 +44,7 @@ interface Api {
     @POST("presence")
     fun presence(
         @Header("Authorization") token: String, @Body attendanceCode: JsonObject
-    ): Call<MessageResponse>
+    ): Call<MessageDataResponse>
 
     @POST("user/updateUsername")
     fun updateUsername(
@@ -69,10 +69,35 @@ interface Api {
     @POST("admin/schedule/store")
     fun storeSchedule(
         @Header("Authorization") token: String, @Body schedule: JsonObject
-    ): Call<MessageResponse>
+    ): Call<MessageDataResponse>
 
     @POST("admin/schedule/add")
     fun addSchedule(
         @Header("Authorization") token: String, @Body schedule: JsonObject
     ): Call<GetScheduleDataResponse>
+
+    @GET("admin/schedule/all")
+    fun scheduleAll(
+        @Header("Authorization") token: String
+    ): Call<GetAllScheduleResponse>
+
+    @POST("admin/schedule/delete")
+    fun deleteSchedule(
+        @Header("Authorization") token: String, @Body schedule: JsonObject
+    ): Call<MessageDataResponse>
+
+    @POST("user/setPrivacyCode")
+    fun setPrivacyCode(
+        @Header("Authorization") token: String, @Body privacyCode: JsonObject
+    ): Call<MessageDataResponse>
+
+    @POST("user/updatePrivacyCode")
+    fun updatePrivacyCode(
+        @Header("Authorization") token: String, @Body privacyCode: JsonObject
+    ): Call<MessageDataResponse>
+
+    @POST("user/deletePrivacyCode")
+    fun deletePrivacyCode(
+        @Header("Authorization") token: String, @Body privacyCode: JsonObject
+    ): Call<MessageDataResponse>
 }

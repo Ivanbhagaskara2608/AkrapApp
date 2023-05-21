@@ -36,6 +36,7 @@ class ProfileActivity : AppCompatActivity() {
         backProfileImageButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("fragmentId", "setting")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
 
@@ -55,6 +56,7 @@ class ProfileActivity : AppCompatActivity() {
                 } else {
                     updateUsername(username)
                     dialog.dismiss()
+                    recreate()
                 }
             }
 
@@ -85,8 +87,10 @@ class ProfileActivity : AppCompatActivity() {
                 val username = response.body()!!.data.username
                 val role = response.body()!!.data.role
                 val status = response.body()!!.data.status
+                val privacyCode = response.body()!!.data.privacyCode ?: ""
 
-                prefManager.setUserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status)
+                prefManager.setUserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
+                usernameTextViewProfile.text = username
                 Toast.makeText(this@ProfileActivity, response.body()!!.message , Toast.LENGTH_LONG).show()
             }
 

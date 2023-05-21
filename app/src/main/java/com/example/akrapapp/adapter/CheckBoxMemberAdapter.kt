@@ -11,17 +11,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.akrapapp.R
 import com.example.akrapapp.model.UserData
 import com.example.akrapapp.shared_preferences.PrefManager
+import com.google.gson.Gson
 import com.google.gson.JsonArray
+import kotlinx.android.synthetic.main.card_view_checkbox_member.view.*
 
 class CheckBoxMemberAdapter (val context: Context, private var mList: ArrayList<UserData>) : RecyclerView.Adapter<CheckBoxMemberAdapter.ViewHolder>() {
 
-    private val checkedItems = JsonArray()
+    private val checkedItems = ArrayList<Int>()
     private lateinit var prefManager: PrefManager
 
     class ViewHolder (ItemView: View): RecyclerView.ViewHolder(ItemView) {
-        val imageMember: ImageView = ItemView.findViewById(R.id.imageCBMemberImageView)
-        val usernameMember: TextView = ItemView.findViewById(R.id.usernameCBMemberTextView)
-        val checkBox: CheckBox = ItemView.findViewById(R.id.selectCBMemberCheckBox)
+        val imageMember: ImageView = ItemView.imageCBMemberImageView
+        val usernameMember: TextView = ItemView.usernameCBMemberTextView
+        val checkBox: CheckBox = ItemView.selectCBMemberCheckBox
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -55,6 +57,9 @@ class CheckBoxMemberAdapter (val context: Context, private var mList: ArrayList<
     }
 
     fun getCheckedItems(): JsonArray {
-        return checkedItems
+        val gson = Gson()
+        val jsonArray = gson.toJsonTree(checkedItems).asJsonArray
+
+        return jsonArray
     }
 }

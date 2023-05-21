@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.akrapapp.R
 import com.example.akrapapp.activity.AddScheduleActivity
+import com.example.akrapapp.activity.DeleteScheduleActivity
 import com.example.akrapapp.adapter.FragmentScheduleAdapter
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.android.material.tabs.TabLayoutMediator
@@ -71,7 +71,8 @@ class ScheduleFragment : Fragment() {
         }
 
         deleteFloatingButton.setOnClickListener {
-            Toast.makeText(requireContext(), "delete button clicked", Toast.LENGTH_SHORT).show()
+            val intent = Intent(requireActivity(), DeleteScheduleActivity::class.java)
+            startActivity(intent)
         }
 
     }

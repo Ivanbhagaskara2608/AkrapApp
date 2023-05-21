@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
@@ -35,6 +36,7 @@ class ScheduleDetailActivity : AppCompatActivity() {
         val location = prefManager.getScheduleData().location
         val startTime = prefManager.getScheduleData().startTime
         val endTime = prefManager.getScheduleData().endTime
+        val status = prefManager.getScheduleData().status
 
 //        change format of date
         val sdfDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -61,6 +63,7 @@ class ScheduleDetailActivity : AppCompatActivity() {
             prefManager.clearScheduleData()
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("fragmentId", "schedule")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }
@@ -74,10 +77,14 @@ class ScheduleDetailActivity : AppCompatActivity() {
             Toast.makeText(this, "Kode Presensi disalin", Toast.LENGTH_SHORT).show()
         }
 
-//        set event when edit button is clicked, run editSchedule function
-        editScheduleButton.setOnClickListener {
-            val intent = Intent(this, EditScheduleActivity::class.java)
-            startActivity(intent)
+        if (status == "unavailable") {
+            editScheduleButton.visibility = View.GONE
+        } else {
+            //        set event when edit button is clicked, run editSchedule function
+            editScheduleButton.setOnClickListener {
+                val intent = Intent(this, EditScheduleActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
     private fun generateQrCode(attendanceCode: String) {
@@ -102,6 +109,7 @@ class ScheduleDetailActivity : AppCompatActivity() {
         prefManager.clearScheduleData()
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("fragmentId", "schedule")
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
     }

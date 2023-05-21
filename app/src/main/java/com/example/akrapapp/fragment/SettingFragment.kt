@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.akrapapp.R
 import com.example.akrapapp.activity.ChangePasswordActivity
 import com.example.akrapapp.activity.LoginActivity
+import com.example.akrapapp.activity.PrivacyActivity
 import com.example.akrapapp.activity.ProfileActivity
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.TokenResponse
@@ -37,7 +38,7 @@ class SettingFragment : Fragment() {
 //        Set card user text
         usernameTextViewSetting.text = prefManager.getUserData().username
         roleTextViewSetting.text = prefManager.getUserData().role
-        if (prefManager.getUserData().status == 1) {
+        if (prefManager.getUserData().status == "active") {
             statusTextViewSetting.text = "Aktif"
         } else {
             statusTextViewSetting.text = "Tidak Aktif"
@@ -54,19 +55,17 @@ class SettingFragment : Fragment() {
             toChangePassword()
         }
 
-        changePasswordImageButton.setOnClickListener {
-            toChangePassword()
-        }
 //        PRIVACY & SECURITY
+        privacyLayout.setOnClickListener {
+            val intent = Intent(requireActivity(), PrivacyActivity::class.java)
+            startActivity(intent)
+        }
 //        ABOUT
 //        RATING
 //        REPORT BUG
+
 //        LOGOUT
         logoutLayout.setOnClickListener {
-            logout()
-        }
-
-        logoutImageButton.setOnClickListener {
             logout()
         }
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="25dp"
+    android:paddingHorizontal="25dp"
+    android:background="@color/orange"
+    tools:ignore="HardcodedText"
+    tools:context=".activity.DeleteScheduleActivity">
+
+    <ImageButton
+        android:id="@+id/backDeleteScheduleImageButton"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/icon_back" />
+
+    <TextView
+        android:id="@+id/DeleteScheduleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hapus Acara"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageButton
+        android:id="@+id/optionMenuDeleteScheduleImageButton"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/baseline_menu_24"
+        android:layout_alignParentEnd="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/deleteScheduleRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/DeleteScheduleTextView"
+        tools:listitem="@layout/card_view_schedule"
+        tools:itemCount="10"/>
+
+    <TextView
+        android:id="@+id/deleteScheduleResponseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Tidak ada Acara"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/deleteScheduleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/baseline_delete_24"
+        app:fabCustomSize="50dp"/>
+
+</RelativeLayout>

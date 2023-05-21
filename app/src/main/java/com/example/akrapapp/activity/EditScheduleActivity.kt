@@ -10,11 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.GetScheduleDataResponse
-import com.example.akrapapp.model.MessageResponse
+import com.example.akrapapp.model.MessageDataResponse
 import com.example.akrapapp.shared_preferences.PrefManager
 import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_edit_schedule.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -103,17 +104,17 @@ class EditScheduleActivity : AppCompatActivity() {
         val jobj = JsonObject()
         jobj.addProperty("scheduleId", scheduleId.toString())
 
-        RetrofitClient.instance.storeSchedule(token, jobj).enqueue(object : Callback<MessageResponse>{
+        RetrofitClient.instance.storeSchedule(token, jobj).enqueue(object : Callback<MessageDataResponse>{
             override fun onResponse(
-                call: Call<MessageResponse>,
-                response: Response<MessageResponse>
+                call: Call<MessageDataResponse>,
+                response: Response<MessageDataResponse>
             ) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@EditScheduleActivity, response.body()!!.msg, Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+            override fun onFailure(call: Call<MessageDataResponse>, t: Throwable) {
                 Log.e("API Error", t.message.toString())
             }
 
@@ -148,13 +149,20 @@ class EditScheduleActivity : AppCompatActivity() {
                     val endTime = data.endTime
                     val location = data.location
                     val id = data.scheduleId
+                    val status = data.status
 
-                    prefManager.setScheduleData(date, activityName, startTime, attdCode, endTime, location, id)
+                    prefManager.setScheduleData(date, activityName, startTime, attdCode, endTime, location, id, status)
 
                     Toast.makeText(this@EditScheduleActivity, response.body()!!.message, Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this@EditScheduleActivity, ScheduleDetailActivity::class.java)
                     startActivity(intent)
+                } else {
+                    // Respon gagal
+                    val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
+                    val messageError = jsonObj.getString("message")
+
+                    Toast.makeText(this@EditScheduleActivity, messageError, Toast.LENGTH_LONG).show()
                 }
             }
 

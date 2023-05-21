@@ -35,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/changePasswordImageView"
@@ -59,15 +58,13 @@
                     android:text="Ganti Password"
                     android:textSize="20sp" />
 
-                <ImageButton
-                    android:id="@+id/changePasswordImageButton"
+                <ImageView
                     android:layout_width="11dp"
                     android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/icon_back_black"
+                    android:src="@drawable/icon_back_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,8 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/privacyImageView"
@@ -101,15 +97,13 @@
                     android:text="Privasi &#38; Keamanan"
                     android:textSize="20sp" />
 
-                <ImageButton
-                    android:id="@+id/privacyImageButton"
+                <ImageView
                     android:layout_width="11dp"
                     android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/icon_back_black"
+                    android:src="@drawable/icon_back_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -127,8 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/aboutImageView"
@@ -151,15 +144,13 @@
                     android:text="Tentang Aplikasi"
                     android:textSize="20sp" />
 
-                <ImageButton
-                    android:id="@+id/aboutImageButton"
+                <ImageView
                     android:layout_width="11dp"
                     android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/icon_back_black"
+                    android:src="@drawable/icon_back_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -169,8 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/ratingImageView"
@@ -193,15 +183,13 @@
                     android:text="Beri Rating"
                     android:textSize="20sp" />
 
-                <ImageButton
-                    android:id="@+id/ratingImageButton"
+                <ImageView
                     android:layout_width="11dp"
                     android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/icon_back_black"
+                    android:src="@drawable/icon_back_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -211,8 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/reportImageView"
@@ -235,15 +222,13 @@
                     android:text="Laporkan Bug"
                     android:textSize="20sp" />
 
-                <ImageButton
-                    android:id="@+id/reportImageButton"
+                <ImageView
                     android:layout_width="11dp"
                     android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/icon_back_black"
+                    android:src="@drawable/icon_back_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -253,8 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick">
+                android:focusable="true">
 
                 <ImageView
                     android:id="@+id/logoutImageView"
@@ -277,15 +261,13 @@
                     android:text="Keluar Akun"
                     android:textSize="20sp" />
 
-                <ImageButton
-                    android:id="@+id/logoutImageButton"
+                <ImageView
                     android:layout_width="11dp"
                     android:layout_height="18dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/icon_back_black"
+                    android:src="@drawable/icon_back_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

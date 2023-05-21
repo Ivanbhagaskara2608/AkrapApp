@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.akrapapp.R
 import com.example.akrapapp.adapter.AdapterSchedule
 import com.example.akrapapp.api.RetrofitClient
-import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.model.GetAllScheduleResponse
+import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_home.*
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +36,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         prefManager = PrefManager(requireActivity())
+
+//        val scheduleListIntent = requireActivity().intent?.getSerializableExtra("scheduleList") as? ArrayList<ItemViewSchedule>
         val dataLogin = requireActivity().intent.getStringExtra("username")
         val username = prefManager.getUserData().username
         val cal = Calendar.getInstance()
@@ -77,28 +78,23 @@ class HomeFragment : Fragment() {
                         val endTime = data[i].endTime
                         val location = data[i].location
                         val id = data[i].scheduleId
+                        val status = data[i].status
 
-                        val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id)
+                        val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id, status)
                         scheduleList.add(schedule)
                     }
+                    scheduleTodayTextView.visibility = View.VISIBLE
                     scheduleTodayRecyclerView.adapter = AdapterSchedule(requireContext(), "home", scheduleList)
                     val layoutManager = LinearLayoutManager(activity)
                     scheduleTodayRecyclerView.layoutManager = layoutManager
 //                    val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 //                    scheduleTodayRecyclerView.layoutManager = layoutManager
-                } else {
-                    // Respon gagal
-                    val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
-                    val messageError = jsonObj.getString("message")
-
-                    scheduleTodayRecyclerView.visibility = View.GONE
-                    scheduleTodayTextView.visibility = View.GONE
                 }
             }
 
             override fun onFailure(call: Call<GetAllScheduleResponse>, t: Throwable) {
 //                get and show error response if there's error on API or server
-                Toast.makeText(requireContext(), t.message.toString() , Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
                 Log.e("API Error", t.message.toString())
             }
 

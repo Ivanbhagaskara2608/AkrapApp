@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="30dp"
+    android:background="@color/orange"
+    android:id="@+id/rootLayoutSetPrivacyCode"
+    tools:ignore="HarcodedText"
+    tools:context=".activity.SetPrivacyCodeActivity">
+
+    <ImageButton
+        android:id="@+id/backSetPrivacyCodeImageButton"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/icon_back" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center"
+        android:src="@drawable/lock"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:text="Kode Privasi Baru"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:id="@+id/passCodeTaskTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="center"
+        android:text="Buat Kode Privasi Baru dengan kombinasi yang kuat dan mudah diingat oleh anda"
+        android:textAlignment="center"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/code1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_circle_24"
+            android:maxLength="1"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:textColor="@color/zxing_transparent" />
+
+        <EditText
+            android:id="@+id/code2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_circle_24"
+            android:maxLength="1"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:textColor="@color/zxing_transparent"/>
+
+        <EditText
+            android:id="@+id/code3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_circle_24"
+            android:maxLength="1"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:textColor="@color/zxing_transparent"/>
+
+        <EditText
+            android:id="@+id/code4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_circle_24"
+            android:maxLength="1"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:textColor="@color/zxing_transparent"/>
+
+        <EditText
+            android:id="@+id/code5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_circle_24"
+            android:maxLength="1"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:textColor="@color/zxing_transparent"/>
+
+        <EditText
+            android:id="@+id/code6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_circle_24"
+            android:maxLength="1"
+            android:inputType="number"
+            android:cursorVisible="false"
+            android:textColor="@color/zxing_transparent"/>
+
+    </LinearLayout>
+
+</LinearLayout>
