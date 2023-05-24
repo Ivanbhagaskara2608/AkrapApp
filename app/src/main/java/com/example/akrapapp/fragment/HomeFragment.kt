@@ -1,6 +1,7 @@
 package com.example.akrapapp.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.akrapapp.R
 import com.example.akrapapp.adapter.AdapterSchedule
+import com.example.akrapapp.adapter.BannerAdapter
 import com.example.akrapapp.api.RetrofitClient
+import com.example.akrapapp.model.BannerItem
 import com.example.akrapapp.model.GetAllScheduleResponse
 import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.shared_preferences.PrefManager
@@ -32,6 +35,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var prefManager: PrefManager
     private var scheduleList = ArrayList<ItemViewSchedule>()
+    private val bannerList = ArrayList<BannerItem>()
+    private val slideHandler = Handler()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -58,6 +63,21 @@ class HomeFragment : Fragment() {
         }
 
         scheduleToday()
+
+        bannerList.add(BannerItem(R.drawable.banner1))
+        bannerList.add(BannerItem(R.drawable.banner2))
+        bannerList.add(BannerItem(R.drawable.banner3))
+        bannerList.add(BannerItem(R.drawable.banner4))
+
+        bannerViewPager.adapter = BannerAdapter(bannerList)
+
+    }
+
+    private val Runnable = Runnable() {
+        @Override
+        fun run() {
+            bannerViewPager.setCurrentItem(bannerViewPager.currentItem + 1)
+        }
     }
 
     private fun scheduleToday() {

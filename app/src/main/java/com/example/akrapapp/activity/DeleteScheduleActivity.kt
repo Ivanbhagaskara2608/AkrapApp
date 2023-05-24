@@ -84,6 +84,12 @@ class DeleteScheduleActivity : AppCompatActivity() {
                     showDatePickerDialog()
                     true
                 }
+                R.id.allScheduleMenu -> {
+                    // Aksi ketika opsi "Acara Selesai" dipilih
+                    scheduleAdapter.clearCheckedItems()
+                    filterList("unavailable")
+                    true
+                }
                 else -> false
             }
         }
@@ -164,6 +170,9 @@ class DeleteScheduleActivity : AppCompatActivity() {
                         val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id, status)
                         scheduleList.add(schedule)
                     }
+                    shrimmerScheduleDelete.stopShimmer()
+                    shrimmerScheduleDelete.visibility = View.GONE
+
                     scheduleAdapter = AdapterSchedule(this@DeleteScheduleActivity, "deleteActivity", scheduleList)
                     deleteScheduleRecyclerView.adapter = scheduleAdapter
                     val layoutManager = LinearLayoutManager(this@DeleteScheduleActivity)

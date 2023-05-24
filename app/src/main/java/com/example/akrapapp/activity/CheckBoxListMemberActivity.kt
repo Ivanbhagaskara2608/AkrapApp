@@ -172,6 +172,8 @@ class CheckBoxListMemberActivity : AppCompatActivity() {
                         val member = UserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
                         memberList.add(member)
                     }
+                    shrimmerMemberCheckBox.stopShimmer()
+                    shrimmerMemberCheckBox.visibility = View.GONE
 
                     checkBoxMemberAdapter = CheckBoxMemberAdapter(this@CheckBoxListMemberActivity, memberList)
                     checkBoxMemberRecyclerView.adapter = checkBoxMemberAdapter

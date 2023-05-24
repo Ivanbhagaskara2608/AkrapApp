@@ -16,4 +16,10 @@
         android:title="Atur Tanggal"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/allScheduleMenu"
+        android:title="Semua Acara"
+        app:showAsAction="never"/>
+
+
 </menu>

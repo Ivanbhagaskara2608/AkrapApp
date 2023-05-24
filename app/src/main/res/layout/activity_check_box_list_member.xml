@@ -100,6 +100,34 @@
             tools:listitem="@layout/card_view_checkbox_member"
             tools:itemCount="7"/>
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shrimmerMemberCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/selectAllLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+                <include layout="@layout/card_view_member_shrimmer"/>
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
         <Button
             android:id="@+id/selectMemberButton"
             android:layout_alignParentBottom="true"

@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
 import com.example.akrapapp.api.RetrofitClient
-import com.example.akrapapp.model.MessageDataResponse
+import com.example.akrapapp.model.MessageResponse
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_register2.*
 import retrofit2.Call
@@ -55,10 +55,10 @@ class Register2Activity : AppCompatActivity() {
             jobj.addProperty("password", password)
             jobj.addProperty("password_confirmation", rePassword)
 
-            RetrofitClient.instance.register(jobj).enqueue(object : Callback<MessageDataResponse>{
+            RetrofitClient.instance.register(jobj).enqueue(object : Callback<MessageResponse>{
                 override fun onResponse(
-                    call: Call<MessageDataResponse>,
-                    response: Response<MessageDataResponse>
+                    call: Call<MessageResponse>,
+                    response: Response<MessageResponse>
                 ) {
                     if (response.isSuccessful) {
                         Toast.makeText(this@Register2Activity, response.body()!!.msg, Toast.LENGTH_LONG).show()
@@ -68,7 +68,7 @@ class Register2Activity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<MessageDataResponse>, t: Throwable) {
+                override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
                     Log.e("API Error", t.message.toString())
                 }
 

@@ -96,6 +96,8 @@ class ListMemberActivity : AppCompatActivity() {
                         val member = UserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
                         memberList.add(member)
                     }
+                    shrimmerMember.stopShimmer()
+                    shrimmerMember.visibility = View.GONE
 
                     listMemberAdapter = ListMemberAdapter(this@ListMemberActivity, memberList, activityId)
                     listMemberRecyclerView.adapter = listMemberAdapter

@@ -62,6 +62,9 @@ class SchedulePastFragment : Fragment() {
                         val schedule = ItemViewSchedule(date, activityName, startTime, attdCode, endTime, location, id, status)
                         scheduleList.add(schedule)
                     }
+                    shrimmerSchedulePast.stopShimmer()
+                    shrimmerSchedulePast.visibility = View.GONE
+
                     schedulePastRecyclerView.adapter = AdapterSchedule(requireContext(), "schedule", scheduleList)
                     val layoutManager = LinearLayoutManager(activity)
                     schedulePastRecyclerView.layoutManager = layoutManager
@@ -70,6 +73,8 @@ class SchedulePastFragment : Fragment() {
                     val jsonObj = JSONObject(response.errorBody()!!.charStream().readText())
                     val messageError = jsonObj.getString("message")
 
+                    shrimmerSchedulePast.stopShimmer()
+                    shrimmerSchedulePast.visibility = View.GONE
                     schedulePastResponseTextView.text = messageError
                     schedulePastResponseTextView.visibility = View.VISIBLE
                 }

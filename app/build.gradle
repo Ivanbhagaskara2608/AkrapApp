@@ -79,4 +79,9 @@ dependencies {
 //    biometric
     implementation("androidx.biometric:biometric:1.2.0-alpha05")
 
+//    shrimmer facebook
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+//    rounded image view
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

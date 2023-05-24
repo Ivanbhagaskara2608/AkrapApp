@@ -14,7 +14,7 @@ interface Api {
     @POST("register")
     fun register(
         @Body registerRequest: JsonObject
-    ): Call<MessageDataResponse>
+    ): Call<MessageResponse>
 
     @POST("logout")
     fun logout(
@@ -44,7 +44,7 @@ interface Api {
     @POST("presence")
     fun presence(
         @Header("Authorization") token: String, @Body attendanceCode: JsonObject
-    ): Call<MessageDataResponse>
+    ): Call<MessageResponse>
 
     @POST("user/updateUsername")
     fun updateUsername(
@@ -69,7 +69,7 @@ interface Api {
     @POST("admin/schedule/store")
     fun storeSchedule(
         @Header("Authorization") token: String, @Body schedule: JsonObject
-    ): Call<MessageDataResponse>
+    ): Call<MessageResponse>
 
     @POST("admin/schedule/add")
     fun addSchedule(
