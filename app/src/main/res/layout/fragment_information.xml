@@ -1,15 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/orange"
+    android:paddingTop="25dp"
+    tools:ignore="HarcodedText"
     tools:context=".fragment.InformationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addInfoFloatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="15dp"
+        app:maxImageSize="30dp"
+        android:backgroundTint="@color/white"
+        app:srcCompat="@drawable/baseline_create_24"
+        app:fabCustomSize="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="info" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Informasi"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shrimmerInformation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+                <include layout="@layout/card_view_information_shrimmer"/>
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/informationRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            tools:listitem="@layout/card_view_information"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

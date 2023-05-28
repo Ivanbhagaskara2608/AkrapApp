@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="25dp"
+    android:paddingHorizontal="25dp"
+    android:background="@color/orange"
+    tools:ignore="HardcodedText"
+    tools:context=".activity.AboutAppActivity">
+
+    <ImageButton
+        android:id="@+id/backAboutImageButton"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:background="@drawable/icon_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/aboutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tentang Aplikasi"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
+        android:paddingVertical="25dp"
+        android:paddingHorizontal="25dp"
+        android:background="@drawable/rectangle_radius_15"
+        android:backgroundTint="@color/white"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/brown"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="AKRAP adalah platform yang dirancang khusus untuk membantu organisasi dalam mengelola kegiatan, anggota, dan keuangan. Dengan antarmuka yang intuitif dan fitur-fitur yang kuat, aplikasi ini memudahkan Anda dalam mengatur jadwal acara, mengkoordinasikan tugas, dan mengatur keuangan organisasi."
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Fitur Utama"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/brown"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="7dp"
+                    android:src="@drawable/baseline_circle_24"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kalender Acara: Buat dan atur jadwal acara organisasi dengan mudah. Tetapkan tanggal, waktu, lokasi, dan deskripsi acara. Anda juga dapat mengundang anggota untuk berpartisipasi dan menerima notifikasi tentang acara yang akan datang."
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="7dp"
+                    android:src="@drawable/baseline_circle_24"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Manajemen Anggota: Kelola daftar anggota organisasi Anda dan informasi kontak mereka. Tambahkan dan hapus anggota, atur peran dan kategori, dan tetap terhubung dengan tim Anda."
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="7dp"
+                    android:src="@drawable/baseline_circle_24"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pemberitahuan: Terima pemberitahuan penting tentang acara, tugas, atau perubahan lainnya yang terjadi dalam organisasi Anda."
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="7dp"
+                    android:src="@drawable/baseline_circle_24"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Keuangan: Kelola aspek keuangan organisasi Anda dengan fitur keuangan yang kami sediakan."
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Pengembang"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/brown"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/example_profile_image"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ivan Bhagaskara K"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ivanbhagas2003@gmail.com"
+                        android:textSize="10sp"/>
+
+                </LinearLayout>
+                
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="AKRAP adalah hasil dari kerja keras dan dedikasi saya sebagai pengembang tunggal. Saya adalah seorang profesional berpengalaman dalam pengembangan perangkat lunak dan telah menciptakan aplikasi ini dengan visi untuk membantu organisasi dalam mengelola kegiatan mereka dengan lebih efisien."
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Kontak &#38; Dukungan"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/brown"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Jika Anda memiliki pertanyaan, masukan, atau memerlukan bantuan teknis, Saya siap membantu Anda. Silakan hubungi saya melalui alamat e-mail ivanbhagas2003@gmail.com. Saya akan dengan senang hati menjawab pertanyaan Anda secepat mungkin."
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Pembaruan &#38; Perbaikan"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/brown"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Saya berkomitmen untuk memberikan pembaruan reguler dan perbaikan bug pada aplikasi. Dengan mendengarkan umpan balik pengguna, Saya berusaha untuk meningkatkan fungsionalitas dan kinerja aplikasi secara terus-menerus. Pastikan untuk memeriksa pembaruan terbaru dan mendapatkan manfaat dari perbaikan dan peningkatan yang ditawarkan."
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

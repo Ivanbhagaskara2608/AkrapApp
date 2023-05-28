@@ -2,6 +2,7 @@ package com.example.akrapapp.shared_preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.akrapapp.model.DataItemInformation
 import com.example.akrapapp.model.DataItemSchedule
 import com.example.akrapapp.model.UserData
 
@@ -65,8 +66,29 @@ class PrefManager(var context: Context) {
         editor.commit()
     }
 
+    fun setInformationData(informationId: Int, title: String, content: String, category: String, created_at: String, updated_at: String) {
+        editor.putInt("informationId", informationId)
+        editor.putString("title", title)
+        editor.putString("content", content)
+        editor.putString("category", category)
+        editor.putString("created_at", created_at)
+        editor.putString("updated_at", updated_at)
+        editor.commit()
+    }
+
     fun getToken(): String? {
         return pref.getString("token", "")
+    }
+
+    fun getInformationData(): DataItemInformation {
+        val id = pref.getInt("informationId", -1)
+        val title = pref.getString("title", "").toString()
+        val content = pref.getString("content", "").toString()
+        val category = pref.getString("category", "").toString()
+        val date = pref.getString("created_at", "").toString()
+        val updated_at = pref.getString("updated_at", "").toString()
+
+        return DataItemInformation(id, title, content, category, date, updated_at)
     }
 
     fun getBiometric(): Boolean {

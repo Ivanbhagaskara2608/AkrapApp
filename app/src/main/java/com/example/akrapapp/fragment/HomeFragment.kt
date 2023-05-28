@@ -9,19 +9,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.example.akrapapp.R
 import com.example.akrapapp.adapter.AdapterSchedule
 import com.example.akrapapp.adapter.BannerAdapter
+import com.example.akrapapp.adapter.InformationAdapter
 import com.example.akrapapp.api.RetrofitClient
-import com.example.akrapapp.model.BannerItem
-import com.example.akrapapp.model.GetAllScheduleResponse
-import com.example.akrapapp.model.ItemViewSchedule
+import com.example.akrapapp.model.*
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.math.abs
 
 
 class HomeFragment : Fragment() {
@@ -35,6 +39,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var prefManager: PrefManager
     private var scheduleList = ArrayList<ItemViewSchedule>()
+    private var informationList = ArrayList<DataItemInformation>()
     private val bannerList = ArrayList<BannerItem>()
     private val slideHandler = Handler()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,21 +68,85 @@ class HomeFragment : Fragment() {
         }
 
         scheduleToday()
+        latestInfo()
 
         bannerList.add(BannerItem(R.drawable.banner1))
         bannerList.add(BannerItem(R.drawable.banner2))
         bannerList.add(BannerItem(R.drawable.banner3))
         bannerList.add(BannerItem(R.drawable.banner4))
 
-        bannerViewPager.adapter = BannerAdapter(bannerList)
+        bannerViewPager.adapter = BannerAdapter(bannerList, bannerViewPager)
+        bannerViewPager.clipToPadding = false
+        bannerViewPager.clipChildren = false
+        bannerViewPager.offscreenPageLimit = 3
+        bannerViewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
+        val compositionTransform = CompositePageTransformer()
+        compositionTransform.addTransformer(MarginPageTransformer(40))
+        compositionTransform.addTransformer(ViewPager2.PageTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.15f
+        })
+
+        bannerViewPager.setPageTransformer(compositionTransform)
+
+        bannerViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+
+                slideHandler.removeCallbacks(sliderRunnable)
+                slideHandler.postDelayed(sliderRunnable, 4000)
+            }
+        })
     }
 
-    private val Runnable = Runnable() {
-        @Override
-        fun run() {
-            bannerViewPager.setCurrentItem(bannerViewPager.currentItem + 1)
-        }
+    private fun latestInfo() {
+        val token = "Bearer ${prefManager.getToken()}"
+
+        RetrofitClient.instance.latestInformationAll(token).enqueue(object : Callback<GetAllInformationResponse> {
+            override fun onResponse(
+                call: Call<GetAllInformationResponse>,
+                response: Response<GetAllInformationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()!!.data
+                    if (data.isNullOrEmpty()) {
+                        noLatestInfoTextView.visibility = View.VISIBLE
+                        latestInfoRecyclerView.visibility = View.GONE
+                    } else {
+                        for (i in 0 until data.size){
+                            val id = data[i].informationId
+                            val title = data[i].title
+                            val content = data[i].content
+                            val category = data[i].category
+                            val date = data[i].created_at
+                            val updatedDate = data[i].updated_at
+
+                            val information = DataItemInformation(id, title, content, category, date, updatedDate)
+                            informationList.add(information)
+                        }
+
+                        latestInfoRecyclerView.adapter = InformationAdapter(requireContext(), informationList)
+                        val layoutManager = LinearLayoutManager(activity)
+                        latestInfoRecyclerView.layoutManager = layoutManager
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetAllInformationResponse>, t: Throwable) {
+                Log.e("API Error", t.message.toString())
+            }
+
+        })
+    }
+
+    private val sliderRunnable: Runnable = Runnable {
+        bannerViewPager.currentItem = bannerViewPager.currentItem + 1
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        slideHandler.removeCallbacksAndMessages(null)
     }
 
     private fun scheduleToday() {

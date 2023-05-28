@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -15,7 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AkrapApp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.EditInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.InformationDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AddInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AboutAppActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.SetConfirmationPrivacyCodeActivity"
             android:exported="false" />
@@ -73,7 +85,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

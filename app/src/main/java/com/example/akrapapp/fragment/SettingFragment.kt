@@ -10,10 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.akrapapp.R
-import com.example.akrapapp.activity.ChangePasswordActivity
-import com.example.akrapapp.activity.LoginActivity
-import com.example.akrapapp.activity.PrivacyActivity
-import com.example.akrapapp.activity.ProfileActivity
+import com.example.akrapapp.activity.*
 import com.example.akrapapp.api.RetrofitClient
 import com.example.akrapapp.model.TokenResponse
 import com.example.akrapapp.shared_preferences.PrefManager
@@ -61,9 +58,27 @@ class SettingFragment : Fragment() {
             startActivity(intent)
         }
 //        ABOUT
+        aboutLayout.setOnClickListener {
+            val intent = Intent(requireActivity(), AboutAppActivity::class.java)
+            startActivity(intent)
+        }
 //        RATING
 //        REPORT BUG
+        reportLayout.setOnClickListener {
+            val recipient = "ivanbhagas2003@gmail.com"
+            val subject = "AKRAP BUG REPORT"
 
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(recipient))
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+
+            if (intent.resolveActivity(requireContext().packageManager) != null) {
+                startActivity(Intent.createChooser(intent, "Send Email"))
+            } else {
+                Toast.makeText(requireContext(), "Tidak ada aplikasi untuk mengirim e-mail", Toast.LENGTH_SHORT).show()
+            }
+        }
 //        LOGOUT
         logoutLayout.setOnClickListener {
             logout()

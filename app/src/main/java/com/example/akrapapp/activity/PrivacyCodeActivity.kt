@@ -226,9 +226,6 @@ class PrivacyCodeActivity : AppCompatActivity() {
         gifImageView.visibility = View.VISIBLE
         Glide.with(this).load(R.drawable.loading).into(gifImageView)
         Handler().postDelayed({
-            // Hapus GIF setelah waktu tertentu
-            gifImageView.setImageResource(0)
-
             when (task) {
                 "openApp" -> {
                     if (inputPassCode == privacyCode) {
@@ -262,6 +259,9 @@ class PrivacyCodeActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            // Hapus GIF setelah waktu tertentu
+            gifImageView.setImageResource(0)
         }, delayInMillis)
     }
 

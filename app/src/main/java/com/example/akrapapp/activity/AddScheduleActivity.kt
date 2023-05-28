@@ -31,22 +31,14 @@ class AddScheduleActivity : AppCompatActivity() {
 
         prefManager = PrefManager(this)
 
-        val activityName = addScheduleNameEditText.text.toString()
-        val location = locationAddScheduleEditText.text.toString()
-        val date = dateAddScheduleEditText.text.toString()
-        val startTime = startTimeAddScheduleEditText.text.toString()
-        val endTime = endTimeAddScheduleEditText.text.toString()
-
         val getSchedule = prefManager.getAddScheduleData()
         val getActivityName = getSchedule["activityName"]
         val getDate = getSchedule["date"]
-        val getLocation = getSchedule["location"]
         val getStartTime = getSchedule["startTime"]
         val getEndTime = getSchedule["endTime"]
 
         setText(getActivityName!!, addScheduleNameInputLayout, addScheduleNameEditText)
         setText(getDate!!, dateAddScheduleInputLayout, dateAddScheduleEditText)
-        setText(getLocation!!, locationAddScheduleInputLayout, locationAddScheduleEditText)
         setText(getStartTime!!, startTimeAddScheduleInputLayout, startTimeAddScheduleEditText)
         setText(getEndTime!!, endTimeAddScheduleInputLayout, endTimeAddScheduleEditText)
 
@@ -74,6 +66,12 @@ class AddScheduleActivity : AppCompatActivity() {
         }
 
         locationAddScheduleEditText.setOnClickListener {
+            val activityName = addScheduleNameEditText.text.toString()
+            val location = locationAddScheduleEditText.text.toString()
+            val date = dateAddScheduleEditText.text.toString()
+            val startTime = startTimeAddScheduleEditText.text.toString()
+            val endTime = endTimeAddScheduleEditText.text.toString()
+
             locationAddScheduleInputLayout.isHintEnabled = false
             prefManager.setAddScheduleData(activityName, date, location, startTime, endTime)
             val intent = Intent(this, ListMemberActivity::class.java)
@@ -151,6 +149,14 @@ class AddScheduleActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        prefManager.clearScheduleData()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("fragmentId", "schedule")
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
+    }
     override fun onResume() {
         super.onResume()
         val prefManager = PrefManager(this)

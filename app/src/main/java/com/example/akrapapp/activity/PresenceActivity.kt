@@ -38,7 +38,9 @@ class PresenceActivity : AppCompatActivity() {
         backPresence.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("fragmentId", "home")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
+            finish()
         }
 
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) ==
@@ -101,6 +103,14 @@ class PresenceActivity : AppCompatActivity() {
         scanner_view.setOnClickListener {
             codescanner.startPreview()
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("fragmentId", "home")
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

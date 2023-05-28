@@ -120,8 +120,9 @@
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/bannerViewPager"
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"/>
+                android:layout_height="130dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,13 +137,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:padding="20dp"
+                android:orientation="vertical"
                 android:background="@drawable/rectangle_radius_15"
-                android:backgroundTint="@color/white">
+                android:backgroundTint="@color/brown">
+
+                <TextView
+                    android:id="@+id/noLatestInfoTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:visibility="gone"
+                    android:text="Tidak ada Informasi Terbaru"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/latestInfoRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:listitem="@layout/card_view_information"
+                    tools:itemCount="5"/>
 
             </LinearLayout>
 

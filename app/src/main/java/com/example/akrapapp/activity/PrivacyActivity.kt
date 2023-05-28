@@ -38,6 +38,7 @@ class PrivacyActivity : AppCompatActivity() {
         backPrivacyImageButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("fragmentId", "setting")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }
@@ -75,6 +76,7 @@ class PrivacyActivity : AppCompatActivity() {
 
         yesBtn.setOnClickListener {
             showBiometricAuthentication(biometric)
+            dialog.dismiss()
         }
 
         noBtn.setOnClickListener {
@@ -175,6 +177,7 @@ class PrivacyActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("fragmentId", "setting")
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()
     }

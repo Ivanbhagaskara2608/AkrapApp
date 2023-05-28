@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.akrapapp.R
-import com.example.akrapapp.model.ItemViewSchedule
 import com.example.akrapapp.shared_preferences.PrefManager
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var prefManager: PrefManager
-    private var scheduleList = ArrayList<ItemViewSchedule>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

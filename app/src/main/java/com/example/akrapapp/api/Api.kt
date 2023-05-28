@@ -100,4 +100,29 @@ interface Api {
     fun deletePrivacyCode(
         @Header("Authorization") token: String, @Body privacyCode: JsonObject
     ): Call<MessageDataResponse>
+
+    @GET("information")
+    fun informationAll(
+        @Header("Authorization") token: String
+    ): Call<GetAllInformationResponse>
+
+    @GET("information/latest")
+    fun latestInformationAll(
+        @Header("Authorization") token: String
+    ): Call<GetAllInformationResponse>
+
+    @POST("admin/information/add")
+    fun addInformation(
+        @Header("Authorization") token: String, @Body information: JsonObject
+    ): Call<GetInformationData>
+
+    @POST("admin/information/delete")
+    fun deleteInformation(
+        @Header("Authorization") token: String, @Body information: JsonObject
+    ): Call<MessageResponse>
+
+    @POST("admin/information/update")
+    fun updateInformation(
+        @Header("Authorization") token: String, @Body information: JsonObject
+    ): Call<GetInformationData>
 }
