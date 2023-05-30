@@ -41,6 +41,12 @@ class InformationFragment : Fragment() {
         prefManager = PrefManager(requireActivity())
         val role = prefManager.getUserData().role
 
+        informationRefreshLayout.setOnRefreshListener {
+            informationList.clear()
+            showAllInformation()
+            informationRefreshLayout.isRefreshing = false
+        }
+
         if (role == "member") {
             addInfoFloatingButton.visibility = View.GONE
         }
@@ -77,7 +83,7 @@ class InformationFragment : Fragment() {
                     }
                     shrimmerInformation.stopShimmer()
                     shrimmerInformation.visibility = View.GONE
-                    informationRecyclerView.adapter = InformationAdapter(requireContext(), informationList)
+                    informationRecyclerView.adapter = InformationAdapter(requireContext(), informationList, "information")
                     val layoutManager = LinearLayoutManager(activity)
                     informationRecyclerView.layoutManager = layoutManager
                 }

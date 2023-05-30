@@ -277,6 +277,7 @@ class PrivacyCodeActivity : AppCompatActivity() {
 
         yesBtn.setOnClickListener {
             deletePrivacyCode(passCode)
+            dialog.dismiss()
         }
 
         noBtn.setOnClickListener {

@@ -1,169 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    android:orientation="vertical"
-    android:scrollbars="none"
     tools:context=".fragment.HomeFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="40dp"
-            android:paddingVertical="25dp"
-            android:orientation="vertical"
-            android:background="@drawable/rectangle_card_user">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
-
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:src="@drawable/person"/>
+                android:paddingHorizontal="40dp"
+                android:paddingVertical="25dp"
+                android:orientation="vertical"
+                android:background="@drawable/rectangle_card_user">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp">
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
 
-                    <TextView
-                        android:id="@+id/greetingTextView"
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:src="@drawable/person"/>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Selamat Pagi"
-                        android:textSize="20sp"/>
+                        android:orientation="vertical"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp">
 
-                    <TextView
-                        android:id="@+id/usernameTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:text="Ivan Bhagaskara"
-                        android:textColor="@color/brown"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/greetingTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Selamat Pagi"
+                            android:textSize="20sp"/>
+
+                        <TextView
+                            android:id="@+id/usernameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:text="Ivan Bhagaskara"
+                            android:textColor="@color/brown"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
-                
-            </LinearLayout>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_marginVertical="12dp"
-                android:src="@drawable/line_card"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginVertical="12dp"
+                    android:src="@drawable/line_card"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="82dp"
+                        android:background="@drawable/button_structure" />
+
+                    <ImageButton
+                        android:id="@+id/statisticButton"
+                        android:layout_width="100dp"
+                        android:layout_height="82dp"
+                        android:layout_marginHorizontal="9dp"
+                        android:background="@drawable/button_statistic" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="82dp"
+                        android:background="@drawable/button_album"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_gravity="center">
-
-                <ImageButton
-                    android:layout_width="100dp"
-                    android:layout_height="82dp"
-                    android:background="@drawable/button_structure" />
-
-                <ImageButton
-                    android:layout_width="100dp"
-                    android:layout_height="82dp"
-                    android:layout_marginHorizontal="9dp"
-                    android:background="@drawable/button_statistic" />
-
-                <ImageButton
-                    android:layout_width="100dp"
-                    android:layout_height="82dp"
-                    android:background="@drawable/button_album"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:paddingHorizontal="25dp">
-
-            <TextView
-                android:id="@+id/scheduleTodayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Acara Hari Ini"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/scheduleTodayRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                tools:listitem="@layout/card_view_schedule"
-                tools:itemCount="2"/>
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/bannerViewPager"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Info Terbaru"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical"
-                android:background="@drawable/rectangle_radius_15"
-                android:backgroundTint="@color/brown">
+                android:paddingHorizontal="25dp">
 
                 <TextView
-                    android:id="@+id/noLatestInfoTextView"
+                    android:id="@+id/scheduleTodayTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="20dp"
                     android:visibility="gone"
-                    android:text="Tidak ada Informasi Terbaru"
+                    android:text="Acara Hari Ini"
+                    android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textColor="@color/white"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/latestInfoRecyclerView"
+                    android:id="@+id/scheduleTodayRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    tools:listitem="@layout/card_view_information"
-                    tools:itemCount="5"/>
+                    tools:listitem="@layout/card_view_schedule"
+                    tools:itemCount="2"/>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/bannerViewPager"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Info Terbaru"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/rectangle_radius_15"
+                    android:backgroundTint="@color/brown">
+
+                    <TextView
+                        android:id="@+id/noLatestInfoTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"
+                        android:visibility="gone"
+                        android:text="Tidak ada Informasi Terbaru"
+                        android:textStyle="bold"
+                        android:textSize="18sp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/latestInfoRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        tools:listitem="@layout/card_view_information"
+                        tools:itemCount="5"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

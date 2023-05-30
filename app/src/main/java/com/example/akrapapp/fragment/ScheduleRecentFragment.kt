@@ -37,6 +37,12 @@ class ScheduleRecentFragment : Fragment() {
 
         prefManager = PrefManager(requireActivity())
 
+        recentScheduleRefreshLayout.setOnRefreshListener {
+            scheduleList.clear()
+            showScheduleRecent()
+            recentScheduleRefreshLayout.isRefreshing = false
+        }
+
         showScheduleRecent()
     }
 

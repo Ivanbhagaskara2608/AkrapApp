@@ -1,5 +1,6 @@
 package com.example.akrapapp.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.akrapapp.R
+import com.example.akrapapp.activity.StatisticActivity
 import com.example.akrapapp.adapter.AdapterSchedule
 import com.example.akrapapp.adapter.BannerAdapter
 import com.example.akrapapp.adapter.InformationAdapter
@@ -47,6 +49,14 @@ class HomeFragment : Fragment() {
 
         prefManager = PrefManager(requireActivity())
 
+        homeRefreshLayout.setOnRefreshListener {
+            informationList.clear()
+            scheduleList.clear()
+            scheduleToday()
+            latestInfo()
+            homeRefreshLayout.isRefreshing = false
+        }
+
 //        val scheduleListIntent = requireActivity().intent?.getSerializableExtra("scheduleList") as? ArrayList<ItemViewSchedule>
         val dataLogin = requireActivity().intent.getStringExtra("username")
         val username = prefManager.getUserData().username
@@ -65,6 +75,11 @@ class HomeFragment : Fragment() {
             greetingTextView.text = "Selamat Siang"
         } else {
             greetingTextView.text = "Selamat Malam"
+        }
+
+        statisticButton.setOnClickListener {
+            val intent = Intent(requireActivity(), StatisticActivity::class.java)
+            startActivity(intent)
         }
 
         scheduleToday()
@@ -126,7 +141,7 @@ class HomeFragment : Fragment() {
                             informationList.add(information)
                         }
 
-                        latestInfoRecyclerView.adapter = InformationAdapter(requireContext(), informationList)
+                        latestInfoRecyclerView.adapter = InformationAdapter(requireContext(), informationList, "home")
                         val layoutManager = LinearLayoutManager(activity)
                         latestInfoRecyclerView.layoutManager = layoutManager
                     }

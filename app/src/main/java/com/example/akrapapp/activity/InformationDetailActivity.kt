@@ -32,6 +32,7 @@ class InformationDetailActivity : AppCompatActivity() {
 
         prefManager = PrefManager(this)
 
+        val fragmentId = intent.getStringExtra("fragmentId")
         val role = prefManager.getUserData().role
         val category = prefManager.getInformationData().category
         val title = prefManager.getInformationData().title
@@ -57,7 +58,7 @@ class InformationDetailActivity : AppCompatActivity() {
 
         backAddInfoImageButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("fragmentId", "information")
+            intent.putExtra("fragmentId", fragmentId)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
@@ -125,8 +126,9 @@ class InformationDetailActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        val fragmentId = intent.getStringExtra("fragmentId")
         val intent = Intent(this, HomeActivity::class.java)
-        intent.putExtra("fragmentId", "information")
+        intent.putExtra("fragmentId", fragmentId)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()

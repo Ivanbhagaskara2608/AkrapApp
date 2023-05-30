@@ -36,6 +36,12 @@ class SchedulePastFragment : Fragment() {
 
         prefManager = PrefManager(requireActivity())
 
+        pastScheduleRefreshLayout.setOnRefreshListener {
+            scheduleList.clear()
+            showSchedulePast()
+            pastScheduleRefreshLayout.isRefreshing = false
+        }
+
         showSchedulePast()
     }
 

@@ -54,27 +54,31 @@ class HomeActivity : AppCompatActivity() {
         }
 //        *******************************************************************************
 
+        var selectedItemId = 0 // Atur nilai default item yang dipilih
+
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.homeNavigation -> {
-                    replaceFragment(HomeFragment())
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+            if (it.itemId != selectedItemId) { // Periksa apakah item yang dipilih berbeda dengan item sebelumnya
+                selectedItemId = it.itemId // Atur item yang dipilih sebagai item yang baru
+                when (it.itemId) {
+                    R.id.homeNavigation -> {
+                        replaceFragment(HomeFragment())
+                        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+                    }
 
-                }
+                    R.id.scheduleNavigation -> {
+                        replaceFragment(ScheduleFragment())
+                        window.statusBarColor = ContextCompat.getColor(this, R.color.orange)
+                    }
 
-                R.id.scheduleNavigation -> {
-                    replaceFragment(ScheduleFragment())
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.orange)
-                }
+                    R.id.infoNavigation -> {
+                        replaceFragment(InformationFragment())
+                        window.statusBarColor = ContextCompat.getColor(this, R.color.orange)
+                    }
 
-                R.id.infoNavigation -> {
-                    replaceFragment(InformationFragment())
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.orange)
-                }
-
-                R.id.settingsNavigation -> {
-                    replaceFragment(SettingFragment())
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.orange)
+                    R.id.settingsNavigation -> {
+                        replaceFragment(SettingFragment())
+                        window.statusBarColor = ContextCompat.getColor(this, R.color.orange)
+                    }
                 }
             }
             true

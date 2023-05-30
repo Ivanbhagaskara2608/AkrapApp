@@ -84,4 +84,10 @@ dependencies {
 
 //    rounded image view
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+//    android chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+//    swipe refresh layout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }

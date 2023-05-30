@@ -56,7 +56,6 @@ class ProfileActivity : AppCompatActivity() {
                 } else {
                     updateUsername(username)
                     dialog.dismiss()
-                    recreate()
                 }
             }
 
@@ -90,8 +89,10 @@ class ProfileActivity : AppCompatActivity() {
                 val privacyCode = response.body()!!.data.privacyCode ?: ""
 
                 prefManager.setUserData(userId, fullName, phoneNumber, birthdate, gender, username, role, status, privacyCode)
-                usernameTextViewProfile.text = username
                 Toast.makeText(this@ProfileActivity, response.body()!!.message , Toast.LENGTH_LONG).show()
+                val intent = Intent(this@ProfileActivity, ProfileActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
             override fun onFailure(call: Call<GetUserDataResponse>, t: Throwable) {
@@ -99,5 +100,12 @@ class ProfileActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("fragmentId", "setting")
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 }

@@ -15,7 +15,7 @@ import com.example.akrapapp.model.DataItemInformation
 import com.example.akrapapp.shared_preferences.PrefManager
 import kotlinx.android.synthetic.main.card_view_information.view.*
 
-class InformationAdapter(val context: Context, private var mList: ArrayList<DataItemInformation>) : RecyclerView.Adapter<InformationAdapter.ViewHolder>() {
+class InformationAdapter(val context: Context, private var mList: ArrayList<DataItemInformation>, val fragmentId: String) : RecyclerView.Adapter<InformationAdapter.ViewHolder>() {
 
     private lateinit var prefManager: PrefManager
 
@@ -59,6 +59,7 @@ class InformationAdapter(val context: Context, private var mList: ArrayList<Data
             prefManager.setInformationData(id, title, content, category, date, updated_at)
 
             val intent = Intent(context, InformationDetailActivity::class.java)
+            intent.putExtra("fragmentId", fragmentId)
             context.startActivity(intent)
         }
     }

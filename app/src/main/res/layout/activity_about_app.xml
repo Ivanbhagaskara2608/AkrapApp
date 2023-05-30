@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="45dp"
-        android:paddingVertical="25dp"
+        android:paddingTop="25dp"
         android:paddingHorizontal="25dp"
         android:background="@drawable/rectangle_radius_15"
         android:backgroundTint="@color/white"
