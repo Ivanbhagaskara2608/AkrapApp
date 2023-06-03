@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +34,7 @@ class InformationFragment : Fragment() {
 
     private lateinit var prefManager: PrefManager
     private var informationList = ArrayList<DataItemInformation>()
+    private var call: Call<GetAllInformationResponse>? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -62,8 +62,9 @@ class InformationFragment : Fragment() {
 
     private fun showAllInformation() {
         val token = "Bearer ${prefManager.getToken()}"
+        call = RetrofitClient.instance.informationAll(token)
 
-        RetrofitClient.instance.informationAll(token).enqueue(object : Callback<GetAllInformationResponse> {
+        call?.enqueue(object : Callback<GetAllInformationResponse> {
             override fun onResponse(
                 call: Call<GetAllInformationResponse>,
                 response: Response<GetAllInformationResponse>
@@ -90,11 +91,15 @@ class InformationFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<GetAllInformationResponse>, t: Throwable) {
-                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
                 Log.e("API Error", t.message.toString())
             }
 
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        call?.cancel()
+    }
 }

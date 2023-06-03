@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.akrapapp.R
@@ -31,6 +30,8 @@ class SchedulePastFragment : Fragment() {
 
     private lateinit var prefManager: PrefManager
     private var scheduleList = ArrayList<ItemViewSchedule>()
+    private var call: Call<GetAllScheduleResponse>? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -47,8 +48,9 @@ class SchedulePastFragment : Fragment() {
 
     private fun showSchedulePast() {
         val token = "Bearer ${prefManager.getToken()}"
+        call = RetrofitClient.instance.schedulePast(token)
 
-        RetrofitClient.instance.schedulePast(token).enqueue(object : Callback<GetAllScheduleResponse> {
+        call?.enqueue(object : Callback<GetAllScheduleResponse> {
             override fun onResponse(
                 call: Call<GetAllScheduleResponse>,
                 response: Response<GetAllScheduleResponse>
@@ -88,10 +90,15 @@ class SchedulePastFragment : Fragment() {
 
             override fun onFailure(call: Call<GetAllScheduleResponse>, t: Throwable) {
 //                get and show error response if there's error on API or server
-                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
                 Log.e("API Error", t.message.toString())
             }
 
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        call?.cancel()
     }
 }

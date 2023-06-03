@@ -23,6 +23,7 @@ class ListMemberActivity : AppCompatActivity() {
     private lateinit var prefManager: PrefManager
     private lateinit var listMemberAdapter: ListMemberAdapter
     private var memberList = ArrayList<UserData>()
+    private var call: Call<GetAllUsersResponse>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_member)
@@ -74,8 +75,9 @@ class ListMemberActivity : AppCompatActivity() {
 
     private fun showListMember(activityId: String) {
         val token = "Bearer ${prefManager.getToken()}"
+        call = RetrofitClient.instance.getUsers(token)
 
-        RetrofitClient.instance.getUsers(token).enqueue(object : Callback<GetAllUsersResponse>{
+        call?.enqueue(object : Callback<GetAllUsersResponse>{
             override fun onResponse(
                 call: Call<GetAllUsersResponse>,
                 response: Response<GetAllUsersResponse>
@@ -111,5 +113,10 @@ class ListMemberActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        call?.cancel()
     }
 }

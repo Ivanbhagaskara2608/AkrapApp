@@ -95,6 +95,7 @@ class EditInformationActivity : AppCompatActivity() {
                     Toast.makeText(this@EditInformationActivity, response.body()!!.message, Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this@EditInformationActivity, InformationDetailActivity::class.java)
+                    intent.putExtra("fragmentId", "information")
                     startActivity(intent)
                 }
             }

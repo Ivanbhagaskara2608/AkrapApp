@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +43,9 @@ class HomeFragment : Fragment() {
     private var informationList = ArrayList<DataItemInformation>()
     private val bannerList = ArrayList<BannerItem>()
     private val slideHandler = Handler()
+    private var callInfo: Call<GetAllInformationResponse>? = null
+    private var callSchedule: Call<GetAllScheduleResponse>? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -117,8 +119,9 @@ class HomeFragment : Fragment() {
 
     private fun latestInfo() {
         val token = "Bearer ${prefManager.getToken()}"
+        callInfo = RetrofitClient.instance.informationAll(token)
 
-        RetrofitClient.instance.latestInformationAll(token).enqueue(object : Callback<GetAllInformationResponse> {
+        callInfo?.enqueue(object : Callback<GetAllInformationResponse> {
             override fun onResponse(
                 call: Call<GetAllInformationResponse>,
                 response: Response<GetAllInformationResponse>
@@ -126,6 +129,7 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     val data = response.body()!!.data
                     if (data.isNullOrEmpty()) {
+                        layoutLatestInfo.visibility = View.VISIBLE
                         noLatestInfoTextView.visibility = View.VISIBLE
                         latestInfoRecyclerView.visibility = View.GONE
                     } else {
@@ -141,6 +145,7 @@ class HomeFragment : Fragment() {
                             informationList.add(information)
                         }
 
+                        layoutLatestInfo.visibility = View.VISIBLE
                         latestInfoRecyclerView.adapter = InformationAdapter(requireContext(), informationList, "home")
                         val layoutManager = LinearLayoutManager(activity)
                         latestInfoRecyclerView.layoutManager = layoutManager
@@ -161,13 +166,16 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        callInfo?.cancel()
+        callSchedule?.cancel()
         slideHandler.removeCallbacksAndMessages(null)
     }
 
     private fun scheduleToday() {
         val token = "Bearer ${prefManager.getToken()}"
+        callSchedule = RetrofitClient.instance.scheduleToday(token)
 
-        RetrofitClient.instance.scheduleToday(token).enqueue(object : Callback<GetAllScheduleResponse> {
+        callSchedule?.enqueue(object : Callback<GetAllScheduleResponse> {
             override fun onResponse(
                 call: Call<GetAllScheduleResponse>,
                 response: Response<GetAllScheduleResponse>
@@ -198,7 +206,7 @@ class HomeFragment : Fragment() {
 
             override fun onFailure(call: Call<GetAllScheduleResponse>, t: Throwable) {
 //                get and show error response if there's error on API or server
-                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(requireContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
                 Log.e("API Error", t.message.toString())
             }
 

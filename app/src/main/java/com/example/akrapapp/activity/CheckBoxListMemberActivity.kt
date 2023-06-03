@@ -30,6 +30,7 @@ class CheckBoxListMemberActivity : AppCompatActivity() {
     private lateinit var prefManager: PrefManager
     private lateinit var checkBoxMemberAdapter: CheckBoxMemberAdapter
     private var memberList = ArrayList<UserData>()
+    private var call: Call<GetAllUsersResponse>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -149,8 +150,9 @@ class CheckBoxListMemberActivity : AppCompatActivity() {
 
     private fun showCheckBoxMember() {
         val token = "Bearer ${prefManager.getToken()}"
+        call = RetrofitClient.instance.getUsers(token)
 
-        RetrofitClient.instance.getUsers(token).enqueue(object : Callback<GetAllUsersResponse> {
+        call?.enqueue(object : Callback<GetAllUsersResponse> {
             override fun onResponse(
                 call: Call<GetAllUsersResponse>,
                 response: Response<GetAllUsersResponse>
@@ -187,5 +189,10 @@ class CheckBoxListMemberActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        call?.cancel()
     }
 }

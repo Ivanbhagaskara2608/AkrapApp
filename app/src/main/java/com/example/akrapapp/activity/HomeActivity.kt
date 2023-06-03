@@ -29,32 +29,35 @@ class HomeActivity : AppCompatActivity() {
 
         val window: Window = this.window
         val fragmentId = intent.getStringExtra("fragmentId")
+        var selectedItemId: Int= 0
 
 //        to change fragment and bottomnav selected, if user back from activity to fragment before
         when (fragmentId) {
             "home" -> {
                 replaceFragment(HomeFragment())
                 window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+                selectedItemId = R.id.homeNavigation
             }
 
             "schedule" -> {
                 replaceFragment(ScheduleFragment())
                 binding.bottomNavigationView.selectedItemId = R.id.scheduleNavigation
+                selectedItemId = R.id.scheduleNavigation
             }
 
             "information" -> {
                 replaceFragment(InformationFragment())
                 binding.bottomNavigationView.selectedItemId = R.id.infoNavigation
+                selectedItemId = R.id.infoNavigation
             }
 
             "setting" -> {
                 replaceFragment(SettingFragment())
                 binding.bottomNavigationView.selectedItemId = R.id.settingsNavigation
+                var selectedItemId = R.id.settingsNavigation
             }
         }
-//        *******************************************************************************
 
-        var selectedItemId = 0 // Atur nilai default item yang dipilih
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             if (it.itemId != selectedItemId) { // Periksa apakah item yang dipilih berbeda dengan item sebelumnya
