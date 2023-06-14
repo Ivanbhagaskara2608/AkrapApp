@@ -1,5 +1,6 @@
 package com.example.akrapapp.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -19,6 +20,14 @@ class StatisticActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistic)
+
+        backGraphImageButton.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("fragmentId", "home")
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
 
         showBarChart()
         showPieChart()
