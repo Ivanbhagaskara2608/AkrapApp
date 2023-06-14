@@ -38,7 +38,7 @@ class AddInformationActivity : AppCompatActivity() {
         }
 
         val categoryList = listOf("Acara", "Berita", "Pembaruan", "Pengumuman")
-        val categoryAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categoryList)
+        val categoryAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categoryList)
 
         categoryAutoComplete.setAdapter(categoryAdapter)
 

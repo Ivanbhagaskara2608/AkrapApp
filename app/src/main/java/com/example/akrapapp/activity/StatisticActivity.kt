@@ -2,8 +2,12 @@ package com.example.akrapapp.activity
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.akrapapp.R
+import com.example.akrapapp.adapter.CustomMarkerView
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.DefaultValueFormatter
@@ -18,6 +22,20 @@ class StatisticActivity : AppCompatActivity() {
 
         showBarChart()
         showPieChart()
+
+        val timeList = listOf("1 Year", "3 Year", "5 Year", "All")
+        val timeAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, timeList)
+
+        timelapseAutoComplete.setAdapter(timeAdapter)
+        timelapseAutoComplete.setOnItemClickListener { parent, _, position, _ ->
+            when (parent.getItemAtPosition(position).toString()) {
+                "All" -> showAllTimeBarChart()
+            }
+        }
+    }
+
+    private fun showAllTimeBarChart() {
+        Toast.makeText(this, "Selected value: all", Toast.LENGTH_SHORT).show()
     }
 
     private fun showPieChart() {
@@ -51,9 +69,9 @@ class StatisticActivity : AppCompatActivity() {
     private fun showBarChart() {
         val list: ArrayList<BarEntry> = ArrayList()
 
-        list.add(BarEntry(3f,20f))
-        list.add(BarEntry(2f,20f))
         list.add(BarEntry(1f,14f))
+        list.add(BarEntry(2f,18f))
+        list.add(BarEntry(3f,20f))
         list.add(BarEntry(4f,12f))
         list.add(BarEntry(5f,17f))
         list.add(BarEntry(6f,16f))
@@ -65,16 +83,24 @@ class StatisticActivity : AppCompatActivity() {
         list.add(BarEntry(12f,12f))
 
         val barDataSet = BarDataSet(list, "list")
+        val orangeColor = ContextCompat.getColor(this, R.color.orange)
+        val colors = ArrayList<Int>()
+        colors.add(orangeColor)
 
         barDataSet.valueFormatter = DefaultValueFormatter(0)
-        barDataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()
+        barDataSet.colors = colors
         barDataSet.valueTextColor = Color.BLACK
+        barDataSet.setDrawValues(false)
         val barData = BarData(barDataSet)
+        barchart.setTouchEnabled(true)
+
 
         barchart.setFitBars(true)
         barchart.data = barData
-        barchart.axisRight.setDrawLabels(false)
 
+        barchart.axisRight.setDrawLabels(false)
+        barchart.axisRight.setDrawAxisLine(false)
+        barchart.axisLeft.setDrawAxisLine(false)
         barchart.xAxis.setDrawLabels(true)
         barchart.xAxis.setDrawAxisLine(false)
         barchart.xAxis.setDrawGridLines(false)
@@ -101,7 +127,7 @@ class StatisticActivity : AppCompatActivity() {
 
         barchart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         barchart.xAxis.setLabelCount(5, false)
-        val months = arrayOf("","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+        val months = arrayOf("" ,"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
         barchart.xAxis.valueFormatter = object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
@@ -111,5 +137,8 @@ class StatisticActivity : AppCompatActivity() {
 
         barchart.legend.isEnabled = false
         barchart.animateY(2000)
+
+        val markerView = CustomMarkerView(this, R.layout.marker_view)
+        barchart.marker = markerView
     }
 }

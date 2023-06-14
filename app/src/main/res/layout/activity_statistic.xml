@@ -10,6 +10,25 @@
     tools:ignore="HardcodedText"
     tools:context=".activity.StatisticActivity">
 
+    <ImageButton
+        android:id="@+id/backGraphImageButton"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:background="@drawable/icon_back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/graphTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grafik Organisasi"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,9 +36,44 @@
         android:orientation="vertical"
         android:background="@drawable/rectangle_radius_15"
         android:backgroundTint="@color/white"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/graphTextView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grafik Uang Kas"
+            android:textColor="@color/brown"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:id="@+id/timelapseInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/baseline_timelapse_24"
+            app:startIconTint="@color/brown"
+            app:endIconTint="@color/black"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/timelapseAutoComplete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_radius_15"
+                android:backgroundTint="@color/white"
+                android:text="1 Year"
+                android:inputType="none"
+                android:paddingTop="10dp"
+                android:textSize="13sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barchart"
